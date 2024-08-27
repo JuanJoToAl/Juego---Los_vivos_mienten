@@ -1,3 +1,36 @@
+# Índice
+
+1. [Introducción](#introducción)
+2. [Instalación](#instalación)
+3. [Uso](#uso)
+4. [Contribución](#contribución)
+5. [Licencia](#licencia)
+6. [Contacto](#contacto)
+
+## Introducción
+
+Aquí va una breve descripción del proyecto.
+
+## Instalación
+
+Instrucciones para instalar y configurar el proyecto.
+
+## Uso
+
+Cómo utilizar el proyecto una vez instalado.
+
+## Contribución
+
+Cómo puedes contribuir al proyecto.
+
+## Licencia
+
+Información sobre la licencia del proyecto.
+
+## Contacto
+
+Cómo contactar con los desarrolladores o responsables del proyecto.
+
 # Proyecto programación
 
 ## Pseudocódigo
