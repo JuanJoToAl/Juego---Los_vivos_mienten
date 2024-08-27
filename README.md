@@ -40,7 +40,7 @@ flowchart TD
 flowchart TD
     A[[imprimir_mensaje]]
 ```
-Esta función se encarga de imprimir los mensajes ya rebanados en frases, esto con la ilusión de que se están escribiendo las palabra por teclado.
+Esta función se encarga de imprimir los mensajes ya rebanados en frases y con la ilusión de que se están escribiendo las palabras por teclado.
 El criterio para dividir los mensajes en frases es la longitud de las frases establecida por la variable ancho_texto.
 
 
