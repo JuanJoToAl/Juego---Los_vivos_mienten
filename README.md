@@ -1,37 +1,11 @@
+# Proyecto programación
 # Índice
 
 1. [Introducción](#introducción)
-2. [Instalación](#instalación)
-3. [Uso](#uso)
-4. [Contribución](#contribución)
-5. [Licencia](#licencia)
-6. [Contacto](#contacto)
-
-## Introducción
-
-Aquí va una breve descripción del proyecto.
-
-## Instalación
-
-Instrucciones para instalar y configurar el proyecto.
-
-## Uso
-
-Cómo utilizar el proyecto una vez instalado.
-
-## Contribución
-
-Cómo puedes contribuir al proyecto.
-
-## Licencia
-
-Información sobre la licencia del proyecto.
-
-## Contacto
-
-Cómo contactar con los desarrolladores o responsables del proyecto.
-
-# Proyecto programación
+2. [Pseudocódigo](##Pseudocódigo)
+    1. [Estructuar general del juego](###Estructuargeneraldeljuego)
+    2. [Función imprimir_mensaje](###Funciónimprimir_mensaje)
+    3. [Función imprimir_animacion](###Funciónimprimir_animacion)
 
 ## Pseudocódigo
 La siguiente sección contiene el diagrama de flujo del juego. Se empieza con una estrucutar general y seguida de esta las explicaciones específicas
