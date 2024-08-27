@@ -1,8 +1,6 @@
 # Proyecto programación
 # Índice
-
-1. [Introducción](#introducción)
-2. [Pseudocódigo](#pseudocódigo)
+1. [Pseudocódigo](#pseudocódigo)
     1. [Estructuar general del juego](#estructuar-general-del-juego)
     2. [Función imprimir_mensaje](#función-imprimir_mensaje)
     3. [Función imprimir_animacion](#función-imprimir_animacion)
