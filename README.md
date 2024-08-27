@@ -49,4 +49,4 @@ El criterio para dividir los mensajes en frases es la longitud de las frases est
 flowchart TD
     A[[imprimir_animacio]]
 ```
-La función imprimir_animacion se encarga de las animaciones que acompañan algunos diálogos de los arcos de la historia. Estas se crean utilizando caracteres ASCII.
+La función imprimir_animacion se encarga de imprimir las animaciones que acompañan algunos diálogos de los arcos de la historia. Estas se crean utilizando caracteres ASCII.
