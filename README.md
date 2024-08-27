@@ -1,7 +1,8 @@
 # Proyecto programación
 
 ## Pseudocódigo
-
+La siguiente sección contiene el diagrama de flujo del juego. Se empieza con una estrucutar general y seguida de esta las explicaciones específicas
+### Estructuar general del juego
 ```mermaid
 flowchart TD
     A(Inicio) --> B
@@ -26,3 +27,19 @@ flowchart TD
         H -- No --> G
     G -- No --> R(Fin)
 ```
+
+### Función imprimir_mensaje
+```mermaid
+flowchart TD
+    A[[imprimir_mensaje]]
+```
+Esta función se encarga de imprimir los mensajes ya rebanados en frases, esto con la ilusión de que se están escribiendo las palabra por teclado.
+El criterio para dividir los mensajes en frases es la longitud de las frases establecida por la variable ancho_texto.
+
+
+### Función imprimir_animacion
+```mermaid
+flowchart TD
+    A[[imprimir_animacio]]
+```
+Esta función se encarga de las animaciones que acompañan algunos diálogos de los arcos de la historia. Esto se hace utilizando caracteres ASCII.
