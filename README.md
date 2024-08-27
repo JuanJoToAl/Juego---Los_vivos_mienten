@@ -8,7 +8,7 @@
     3. [Función imprimir_animacion](#función-imprimir_animacion)
 
 ## Pseudocódigo
-La siguiente sección contiene el diagrama de flujo del juego. Se empieza con una estrucutar general y seguida de esta las explicaciones específicas
+La siguiente sección contiene el diagrama de flujo del juego. Se empieza con una estrucutar general y seguida de esta se presentan las explicaciones específicas
 ### Estructuar general del juego
 ```mermaid
 flowchart TD
