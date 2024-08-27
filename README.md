@@ -40,7 +40,7 @@ flowchart TD
 flowchart TD
     A[[imprimir_mensaje]]
 ```
-Esta función se encarga de imprimir los mensajes ya rebanados en frases y con la ilusión de que se están escribiendo las palabras por teclado.
+La función imprimir_mensaje se encarga de imprimir los mensajes ya rebanados en frases y con la ilusión de que se están escribiendo las palabras por teclado.
 El criterio para dividir los mensajes en frases es la longitud de las frases establecida por la variable ancho_texto.
 
 
@@ -49,4 +49,4 @@ El criterio para dividir los mensajes en frases es la longitud de las frases est
 flowchart TD
     A[[imprimir_animacio]]
 ```
-Esta función se encarga de las animaciones que acompañan algunos diálogos de los arcos de la historia. Esto se hace utilizando caracteres ASCII.
+La función imprimir_animacion se encarga de las animaciones que acompañan algunos diálogos de los arcos de la historia. Estas se crean utilizando caracteres ASCII.
