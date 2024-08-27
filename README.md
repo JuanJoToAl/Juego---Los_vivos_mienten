@@ -47,6 +47,6 @@ El criterio para dividir los mensajes en frases es la longitud de las frases est
 ### Función imprimir_animacion
 ```mermaid
 flowchart TD
-    A[[imprimir_animacio]]
+    A[[imprimir_animacion]]
 ```
 La función imprimir_animacion se encarga de imprimir las animaciones que acompañan algunos diálogos de los arcos de la historia. Estas se crean utilizando caracteres ASCII.
