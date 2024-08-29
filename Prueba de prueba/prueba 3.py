@@ -1,9 +1,10 @@
 #Quiero que en una variable quede la orientación y el mensaje seccionado
 
 #Imprime el primer texto otra vez con la animación de escritura y alineado a la derecha
-
+import os
 from time import sleep
 from copy import deepcopy
+
 
 def imprimir_ventana(ancho_pantalla, height1, altura_interaccion):
     print("-" * (ancho_pantalla + 2))
@@ -103,8 +104,8 @@ def mover_cursor(linea_actual, rango_mensaje, lista_mensajes):
         print(LINE_UP, end="")
 
     for _ in range(linea_actual):
-        if _ == linea_actual - 1 and _ != 15:
-            print("")
+        if _ == linea_actual - 1 and _ != 14:
+            #print("")
             rango_mensaje = imprimir_seccion(lista_mensajes, rango_mensaje)
         else:
             print("")
@@ -117,7 +118,7 @@ def imprimir_seccion(lista_mensajes, rango_mensaje):
     i = 0
     seccion = 0
     
-    while i < 16 - rango_mensaje:
+    while i < 15 - rango_mensaje:
         if seccion < len(lista_mensajes[contador][1]) and lista_mensajes[contador][0] == "derch":
             print("| " + lista_mensajes[contador][1][frase])
             frase += 1
@@ -144,7 +145,7 @@ def borrar_pantalla(ancho_pantalla):
     print("")
     print("")
 
-    for _ in range(15):
+    for _ in range(14):
         print("|" + " " * ancho_pantalla)
 
 if __name__ == "__main__":
@@ -152,8 +153,9 @@ if __name__ == "__main__":
     ancho_pantalla = 80
     altura_dialogo = 15
     altura_interaccion = 8
-    linea_actual = altura_dialogo + 1
+    linea_actual = deepcopy(altura_dialogo) 
     rango_mensaje = deepcopy(linea_actual)
+    os.system('cls')
 
     imprimir_ventana(ancho_pantalla, altura_dialogo, altura_interaccion)
 
