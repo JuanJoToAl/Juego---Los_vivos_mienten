@@ -32,6 +32,19 @@ flowchart TD
         H -- No --> G
     G -- No --> R(Fin)
 ```
+### Función imprimir_ventana
+```mermaid
+flowchart TD
+    A[[Imprimir_ventana]]
+```
+La función imprimir_ventana se encarga de imprimir la ventana de juego con unas dimensiones establecidas.
+
+### Función dividir_mensaje
+```mermaid
+flowchart TD
+    A[[dividir_mensaje]]
+```
+La función dividir_mensaje se encarga de tomar el mensaje y dividirlo de tal manera que quepa en el ancho de la pantalla. Si no cabe, hace nuevos renglones.
 
 ### Función imprimir_mensaje
 ```mermaid
