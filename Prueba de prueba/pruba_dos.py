@@ -43,6 +43,7 @@ def dividir_mensaje(lista_mensajes: list, ancho_pantalla: int,
 
     lista_mensajes = repuesto_lista_mensaje
     seccion_mensaje += seccion_escritura
+    print(seccion_mensaje)
     return seccion_escritura, lista_mensajes, seccion_mensaje
 
 def imprimir_mensaje(seccion_escritura, lista_mensajes : list, linea_actual, 
