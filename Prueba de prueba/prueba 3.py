@@ -65,17 +65,15 @@ def imprimir_mensaje(seccion_escritura, lista_mensajes : list, linea_actual,
 
             linea_actual, rango_mensaje = mover_cursor(linea_actual, rango_mensaje, lista_mensajes)
             print("| ", end = "")
-            #print(f"Valor línea actual en ciclo:{linea_actual}")
             
     else:
         borrar_pantalla(ancho_pantalla)
         linea_actual -= 1
         
-        #print("h" * 80 , linea_actual)
         linea_actual, rango_mensaje = mover_cursor(linea_actual, rango_mensaje, lista_mensajes)
-
+        print('\n', end = "")
         for palabra in seccion_escritura:  
-            print('\n' + "|" + " " * 18, end = "")
+            print("|" + " " * 18, end = "")
             for caracter in palabra:
                 print(caracter, end="", flush=True)
                 sleep(0.02)
@@ -105,7 +103,7 @@ def mover_cursor(linea_actual, rango_mensaje, lista_mensajes):
 
     for _ in range(linea_actual):
         if _ == linea_actual - 1 and _ != 14:
-            #print("")
+            print("")
             rango_mensaje = imprimir_seccion(lista_mensajes, rango_mensaje)
         else:
             print("")
@@ -121,6 +119,12 @@ def imprimir_seccion(lista_mensajes, rango_mensaje):
     while i < 15 - rango_mensaje:
         if seccion < len(lista_mensajes[contador][1]) and lista_mensajes[contador][0] == "derch":
             print("| " + lista_mensajes[contador][1][frase])
+            frase += 1
+            seccion += 1
+            i += 1
+        elif seccion < len(lista_mensajes[contador][1]) and lista_mensajes[contador][0] == "izqrd" and frase == 0:
+            print("| " + " " * 18)
+            print("| " + " " * 18 + lista_mensajes[contador][1][frase])
             frase += 1
             seccion += 1
             i += 1
@@ -143,9 +147,8 @@ def borrar_pantalla(ancho_pantalla):
         print(LINE_UP, end = "")
 
     print("")
-    print("")
 
-    for _ in range(14):
+    for _ in range(15):
         print("|" + " " * ancho_pantalla)
 
 if __name__ == "__main__":
