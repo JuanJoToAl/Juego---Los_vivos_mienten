@@ -11,7 +11,7 @@
         1. [Función taxi](#función-taxi)
         2. [Función diario](#función-diario)
 
-## Pseudocódigo
+## Diagrama de flujo
 La siguiente sección contiene el diagrama de flujo del juego. Se empieza con una estrucutar general y seguida de esta se presentan las explicaciones específicas
 ### Estructuar general del juego
 
