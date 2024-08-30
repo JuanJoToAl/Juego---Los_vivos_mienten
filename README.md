@@ -17,17 +17,17 @@ La siguiente sección contiene el diagrama de flujo del juego. Se empieza con un
 
 ```mermaid
 flowchart TB
-    A(Inicio) --> B[[Inicializción variables para la impresión de la ventana de juego]]
+    A(Inicio) --> B[[Inicialización variables para la impresión de la ventana de juego]]
     B --> C[["Se imprime la ventana de juego con la función 'imprimir_ventana'"]]
     C --> D{¿Hay arcos disponibles?}
     D-- Sí --> F{¿Hay mensajes por imprimir en el arco?}
         F -- Sí --> G[["Se divide el mensaje con función 'dividir_mensaje'"]]
-            G --> H[[Se establece la alineación del mensaje con función imprimir_seccion]]
+            G --> H[[Se establece la alineación del mensaje con función 'imprimir_seccion']]
             H --> I[["Se imprime el mensaje con función 'imprimir_mensaje'"]]
             I --> J{¿Hay animaciones por imprimir?}
             J -- Sí --> K[["Se imprime la animación con función 'imprimir_animación'"]]
                 K --> L{¿Hay opciones de diálogo por imprimir?}
-                L -- Sí --> M[[Se establece la alineación del mensaje con función imprimir_seccion]]
+                L -- Sí --> M[[Se establece la alineación del mensaje con función 'imprimir_seccion']]
                     M --> N[["Se divide el mensaje con función 'dividir_mensaje'"]]
                     N --> O[["Se imprime el mensaje con función 'imprimir_mensaje'"]]
                     O --> F
@@ -37,7 +37,7 @@ flowchart TB
     D -- No --> Z(Fin)
 ```
 
-### Inicializción de variables para la ventana de juego
+### Inicialización de variables para la ventana de juego
 Para la impresión de la ventana de juego se establece que:     
 * El ancho de la pantalla es de 80 racacteres.
 * La altura de la ventana de diálogo es de 15 caracteres.
