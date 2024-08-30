@@ -1,6 +1,5 @@
 #Quiero que en una variable quede la orientación y el mensaje seccionado
-
-#Imprime el primer texto otra vez con la animación de escritura y alineado a la derecha
+# Arreglar lo que está pasando con el if y elif cuando quito el elif y quito el and
 import os
 from time import sleep
 from copy import deepcopy
@@ -46,10 +45,10 @@ def dividir_mensaje(lista_mensajes: list, ancho_pantalla: int,
 
 def imprimir_mensaje(seccion_escritura, lista_mensajes : list, linea_actual, 
                      ancho_pantalla : int, sublista : int, rango_mensaje: int):
-    #print(f"Valor línea actual antes de ciclo:{linea_actual}")
+    
     if lista_mensajes[sublista][0] == True:
         # Imprimir cada carácter con el efecto de escritura
-        linea_actual, rango_mensaje = mover_cursor(linea_actual, rango_mensaje, lista_mensajes)
+        linea_actual, rango_mensaje, contador, frase = mover_cursor(linea_actual, rango_mensaje, lista_mensajes)
         print("| ", end = "")
 
         for palabra in seccion_escritura:
@@ -63,14 +62,15 @@ def imprimir_mensaje(seccion_escritura, lista_mensajes : list, linea_actual,
             linea_actual -= 1
             rango_mensaje -=1
 
-            linea_actual, rango_mensaje = mover_cursor(linea_actual, rango_mensaje, lista_mensajes)
+            linea_actual, rango_mensaje, contador, frase = mover_cursor(linea_actual, rango_mensaje, lista_mensajes)
             print("| ", end = "")
+            linea_actual, lista_mensajes = actualizar_rango(linea_actual, lista_mensajes, contador, frase)
             
     else:
         borrar_pantalla(ancho_pantalla)
         linea_actual -= 1
         
-        linea_actual, rango_mensaje = mover_cursor(linea_actual, rango_mensaje, lista_mensajes)
+        linea_actual, rango_mensaje, contador, frase = mover_cursor(linea_actual, rango_mensaje, lista_mensajes)
         print('\n', end = "")
         for palabra in seccion_escritura:  
             print("|" + " " * 18, end = "")
@@ -83,15 +83,21 @@ def imprimir_mensaje(seccion_escritura, lista_mensajes : list, linea_actual,
             linea_actual -= 1
             rango_mensaje -=1
 
-            linea_actual, rango_mensaje = mover_cursor(linea_actual, rango_mensaje, lista_mensajes)
-            
-
-    #print("h" * 80, linea_actual)
-
-    #linea_actual -= 1
+            linea_actual, rango_mensaje, contador, frase = mover_cursor(linea_actual, rango_mensaje, lista_mensajes)
+            linea_actual, lista_mensajes = actualizar_rango(linea_actual, lista_mensajes, contador, frase)
 
     return linea_actual, rango_mensaje
-            
+
+def actualizar_rango(linea_actual, lista_mensajes, contador, frase):
+   
+    if linea_actual == 0:
+        print(f"ahoraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa{linea_actual}")
+        linea_actual = 15
+        
+        lista_mensajes.pop(lista_mensajes[contador][1][frase])
+
+    return linea_actual, lista_mensajes
+
 def mover_cursor(linea_actual, rango_mensaje, lista_mensajes):
 
     #Codigo ANSI para subir de linea
@@ -104,11 +110,11 @@ def mover_cursor(linea_actual, rango_mensaje, lista_mensajes):
     for _ in range(linea_actual):
         if _ == linea_actual - 1 and _ != 14:
             print("")
-            rango_mensaje = rango_seccion(lista_mensajes, rango_mensaje)
+            rango_mensaje, contador, frase = rango_seccion(lista_mensajes, rango_mensaje)
         else:
             print("")
         
-    return linea_actual, rango_mensaje
+    return linea_actual, rango_mensaje, contador, frase
 
 def rango_seccion(lista_mensajes, rango_mensaje):
     contador = 0
@@ -117,20 +123,16 @@ def rango_seccion(lista_mensajes, rango_mensaje):
     seccion = 0
     
     while i < 15 - rango_mensaje:
-        if seccion < len(lista_mensajes[contador][1]) and lista_mensajes[contador][0] == True:
-            frase, seccion, i =imprimir_seccion(lista_mensajes, contador, frase, seccion, i)
-
-        elif seccion < len(lista_mensajes[contador][1]) and lista_mensajes[contador][0] == False:
-            frase, seccion, i = imprimir_seccion(lista_mensajes, contador, frase, seccion, i)
-
+        if seccion < len(lista_mensajes[contador][1]):
+            frase, seccion, i, contador, lista_mensajes = imprimir_seccion(lista_mensajes, contador, 
+                                                                           frase, seccion, i)
         else:
             print("| " + " " * 18)
             contador +=1
             frase = 0
             seccion = 0
-            i += 1
     
-    return rango_mensaje
+    return rango_mensaje, contador, frase
 
 def imprimir_seccion(lista_mensajes, contador, frase, seccion, i):
     if lista_mensajes[contador][0] == True:
@@ -142,8 +144,8 @@ def imprimir_seccion(lista_mensajes, contador, frase, seccion, i):
     frase += 1
     seccion += 1
     i += 1
-    
-    return frase, seccion, i
+
+    return frase, seccion, i, contador, lista_mensajes
 
 def borrar_pantalla(ancho_pantalla):
     LINE_UP = '\033[1A'
@@ -177,6 +179,7 @@ if __name__ == "__main__":
                                                                          seccion_escritura)
     linea_actual, rango_mensaje = imprimir_mensaje(seccion_escritura, lista_mensajes, linea_actual, 
                                     ancho_pantalla, sublista, rango_mensaje)
+    
     mensaje = [False, "[Serpiente]: La tierra, recién salida del barro, olía a hierba húmeda. Aureliano Buendía sintió el frío de la madrugada y se arrepintió de haber abandonado el sueño. Pero Úrsula, que era más práctica, le ordenó que fuera a reconocer los límites de la propiedad. Aureliano Buendía salió a galope, con las espuelas clavadas en los flancos del caballo, y regresó a mediodía con los ojos enrojecidos por el sol, la ropa hecha jirones y la frente surcada de sudor. Traía consigo la certeza de que habían llegado al fin del mundo."]
     lista_mensajes.append(mensaje)
     sublista += 1
@@ -184,4 +187,7 @@ if __name__ == "__main__":
                                                                          seccion_escritura)
     linea_actual, rango_mensaje = imprimir_mensaje(seccion_escritura, lista_mensajes, linea_actual, 
                                                    ancho_pantalla, sublista, rango_mensaje)
+    
+
+
 

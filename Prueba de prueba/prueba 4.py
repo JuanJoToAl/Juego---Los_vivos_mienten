@@ -161,7 +161,7 @@ if __name__ == "__main__":
 
     lista_mensajes = [[True, "[Serpiente]: Muchos años después, frente al pelotón de fusilamiento, el "
                "coronel Aureliano Buendía había de recordar aquella tarde remota en que "
-               "su padre lo llevó a conocer el hielo."]]
+               "su padre lo llevó a conocer el hielo."], [False, "[Serpiente]: La tierra, recién salida del barro, olía a hierba húmeda. Aureliano Buendía sintió el frío de la madrugada y se arrepintió de haber abandonado el sueño. Pero Úrsula, que era más práctica, le ordenó que fuera a reconocer los límites de la propiedad. Aureliano Buendía salió a galope, con las espuelas clavadas en los flancos del caballo, y regresó a mediodía con los ojos enrojecidos por el sol, la ropa hecha jirones y la frente surcada de sudor. Traía consigo la certeza de que habían llegado al fin del mundo."]]
     
     sublista = 0
     seccion_escritura = []
@@ -171,8 +171,8 @@ if __name__ == "__main__":
     linea_actual, rango_mensaje = imprimir_mensaje(seccion_escritura, lista_mensajes, linea_actual, 
                                     ancho_pantalla, sublista, rango_mensaje)
     
-    mensaje = [False, "[Serpiente]: La tierra, recién salida del barro, olía a hierba húmeda. Aureliano Buendía sintió el frío de la madrugada y se arrepintió de haber abandonado el sueño. Pero Úrsula, que era más práctica, le ordenó que fuera a reconocer los límites de la propiedad. Aureliano Buendía salió a galope, con las espuelas clavadas en los flancos del caballo, y regresó a mediodía con los ojos enrojecidos por el sol, la ropa hecha jirones y la frente surcada de sudor. Traía consigo la certeza de que habían llegado al fin del mundo."]
-    lista_mensajes.append(mensaje)
+    #mensaje = 
+    #lista_mensajes.append(mensaje)
     sublista += 1
     seccion_escritura, lista_mensajes = dividir_mensaje(lista_mensajes, ancho_pantalla, sublista, 
                                                                          seccion_escritura)
