@@ -13,7 +13,7 @@ def imprimir_ventana(ancho_pantalla, height1, altura_interaccion):
     for _ in range(altura_interaccion):
         print("|" + " " * ancho_pantalla + "|")
     print("-" * (ancho_pantalla + 2))
-
+#fasfafasdasda
 def dividir_mensaje(lista_mensajes: list, ancho_pantalla: int, 
                     sublista : int, seccion_escritura : list):
     mensaje = lista_mensajes[sublista][1]
