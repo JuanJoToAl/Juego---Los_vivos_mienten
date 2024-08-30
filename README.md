@@ -1,8 +1,8 @@
 # Proyecto programación
 # Índice
-1. [Pseudocódigo](#pseudocódigo)
+1. [Diagrama de flujo](#diagrama-de-flujo)
     1. [Estructuar general del juego](#estructuar-general-del-juego)
-        1. [Inicializción de variables para la ventana de juego](#inicializción-de-variables-para-la-ventana-de-juego)
+        1. [Inicialización de variables para la ventana de juego](#inicialización-de-variables-para-la-ventana-de-juego)
         2. [Función dividir_mensaje](#función-dividir_mensaje)
         3. [Función imprimir_seccion](#función-imprimir_seccion)
         4. [Función imprimir_mensaje](#función-imprimir_mensaje)
@@ -342,10 +342,72 @@ flowchart TD
     A[[taxi]]
 ```
 La función taxi se encarga de tomar el entero que representa el dinero del jugador, y le resta el valor de la carrera de taxi.
-
-### Función diario
+```python
+#Función cuando se usa dinero en el taxi
+def taxi (x:int)->int:
+   x-=15000
+   return x
+```
+### Función escribir
 ```mermaid
 flowchart TD
-    A[[diario]]
+    A[[escribir]]
 ```
 Es una función que se encarga de modificar el diario, que es una lista la cual guarda el texto que el jugador quiera, estas notas se pueden editar, borra o se pueden escribir unas nuevas.
+```python
+# 2. Diario y bolígrafo
+bolígrafo=False
+diario=[]
+def escribir (x:str)->list:
+#Se determina si el diario está en blanco, si está en blanco, solo da la opción de escribir o no escribir
+    if len(diario)==0:
+        print("El diario está en blanco)")
+        while x==True:
+            x=elección=input("\t(1).Escribir algo nuevo \n\t(2).No escribir nada\n\t")
+            if elección=="1":
+                diario.append(input("Escriba el texto que quiere añadir "))
+            elif elección=="2":
+                print("Continuando")
+#Si el jugador escribe otor elemento, el programa piede al jugador escoger entre las dos opciones
+            else:
+                print("por favor, escoja alguna de las opciones")
+                x=True
+#Si no está en blanco, se imprime la lista y el jugador escoge si añade, elimina o edita notas, en el caso de editar, quita el elemento que se deasea y se inserta uno nuevo
+    else:
+        print(diario)
+        while x==True:
+            x=elección=input("\t(1). Escribir algo nuevo\n\t(2).Borrar un elemento \n\t(3).Editar un elemento \n\t")
+        if elección=="1":
+            diario.append(input("Escriba el texto que quiere añadir "))
+        elif elección=="2":
+            eliminar=int(input("Escriba el número de la nota que desea eliminar "))
+            eliminar-=1
+            diario.pop(eliminar)
+#Para editar, se elimina el elemento de la lista y se añade la nueva nota en el mismo lugar
+        elif elección=="3":
+            modificar=int(input("Escriba el número de la nota que desea editar "))
+            modificar-=1
+            diario.pop(modificar)
+            diario.insert(modificar,input("Escriba la nueva nota "))
+#Si el jugador escribe otor elemento, el programa piede al jugador escoger entre las dos opciones
+        else:
+            print("Por favor, escoja alguna de las opciones")
+            x=True
+#Para ejecutar el diario
+if __name__ == "__main__":
+  x=True
+  escribir(x)
+#Si se ejecuta por el bolígrafo, se pondría esto
+  if __name__ == "__main__":
+    papelescribir=True
+    while papelescribir==True:
+#EL jugador escoge dónde escribir, se escoge el diario, se corre la función "escribir", si se escoge las cartas, no se permite porque son pruebas, si escribe otra cosa, el programa pide escoger una opción
+        papelescribir=input("¿En dónde quieres escribir?\n\t(1).Diario\n\t(2).Cartas")
+        if papelesescribir=="1":
+            bolígrafo=True
+            escribir(bolígrafo)
+        elif papelesescribir=="2":
+            print("´No puedo comprometer las purebas´")
+        else:
+            print("Por favor escoger una opción ")
+            papelesescribir=True
