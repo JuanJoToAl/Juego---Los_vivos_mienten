@@ -128,9 +128,9 @@ def imprimir_seccion(lista_mensajes, rango_mensaje,
         for i in range(16 - rango_mensaje):
             print("| " + seccion_mensaje[i])
         marcador += 1
-        print(f"esteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee es el marcador:{marcador}")
+        #print(f"esteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee es el marcador:{marcador}")
     else:
-        print("entradaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        #print("entradaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
         for i in range(16 - rango_mensaje):
             print("| " + " " * 18 + seccion_mensaje[i])
             #print(f"Lo que se está accediendo: {lista_mensajes[sublista][1]}")

@@ -47,7 +47,7 @@ def dividir_mensaje(lista_mensajes: list, ancho_pantalla: int,
 def imprimir_mensaje(seccion_escritura, lista_mensajes : list, linea_actual, 
                      ancho_pantalla : int, sublista : int, rango_mensaje: int):
     #print(f"Valor línea actual antes de ciclo:{linea_actual}")
-    if lista_mensajes[sublista][0] == "derch":
+    if lista_mensajes[sublista][0] == True:
         # Imprimir cada carácter con el efecto de escritura
         linea_actual, rango_mensaje = mover_cursor(linea_actual, rango_mensaje, lista_mensajes)
         print("| ", end = "")
@@ -104,42 +104,46 @@ def mover_cursor(linea_actual, rango_mensaje, lista_mensajes):
     for _ in range(linea_actual):
         if _ == linea_actual - 1 and _ != 14:
             print("")
-            rango_mensaje = imprimir_seccion(lista_mensajes, rango_mensaje)
+            rango_mensaje = rango_seccion(lista_mensajes, rango_mensaje)
         else:
             print("")
         
     return linea_actual, rango_mensaje
 
-def imprimir_seccion(lista_mensajes, rango_mensaje):
+def rango_seccion(lista_mensajes, rango_mensaje):
     contador = 0
     frase = 0
     i = 0
     seccion = 0
     
     while i < 15 - rango_mensaje:
-        if seccion < len(lista_mensajes[contador][1]) and lista_mensajes[contador][0] == "derch":
-            print("| " + lista_mensajes[contador][1][frase])
-            frase += 1
-            seccion += 1
-            i += 1
-        elif seccion < len(lista_mensajes[contador][1]) and lista_mensajes[contador][0] == "izqrd" and frase == 0:
-            print("| " + " " * 18)
-            print("| " + " " * 18 + lista_mensajes[contador][1][frase])
-            frase += 1
-            seccion += 1
-            i += 1
-        elif seccion < len(lista_mensajes[contador][1]) and lista_mensajes[contador][0] == "izqrd":
-            print("| " + " " * 18 + lista_mensajes[contador][1][frase])
-            frase += 1
-            seccion += 1
-            i += 1
+        if seccion < len(lista_mensajes[contador][1]) and lista_mensajes[contador][0] == True:
+            frase, seccion, i =imprimir_seccion(lista_mensajes, contador, frase, seccion, i)
+
+        elif seccion < len(lista_mensajes[contador][1]) and lista_mensajes[contador][0] == False:
+            frase, seccion, i = imprimir_seccion(lista_mensajes, contador, frase, seccion, i)
+
         else:
+            print("| " + " " * 18)
             contador +=1
             frase = 0
             seccion = 0
             i += 1
     
     return rango_mensaje
+
+def imprimir_seccion(lista_mensajes, contador, frase, seccion, i):
+    if lista_mensajes[contador][0] == True:
+        print("| " + lista_mensajes[contador][1][frase])
+
+    else:
+        print("| " + " " * 18 + lista_mensajes[contador][1][frase])
+
+    frase += 1
+    seccion += 1
+    i += 1
+    
+    return frase, seccion, i
 
 def borrar_pantalla(ancho_pantalla):
     LINE_UP = '\033[1A'
@@ -162,7 +166,7 @@ if __name__ == "__main__":
 
     imprimir_ventana(ancho_pantalla, altura_dialogo, altura_interaccion)
 
-    lista_mensajes = [["derch", "[Serpiente]: Muchos años después, frente al pelotón de fusilamiento, el "
+    lista_mensajes = [[True, "[Serpiente]: Muchos años después, frente al pelotón de fusilamiento, el "
                "coronel Aureliano Buendía había de recordar aquella tarde remota en que "
                "su padre lo llevó a conocer el hielo."]]
     
@@ -173,7 +177,7 @@ if __name__ == "__main__":
                                                                          seccion_escritura)
     linea_actual, rango_mensaje = imprimir_mensaje(seccion_escritura, lista_mensajes, linea_actual, 
                                     ancho_pantalla, sublista, rango_mensaje)
-    mensaje = ["izqrd", "[Serpiente]: La tierra, recién salida del barro, olía a hierba húmeda. Aureliano Buendía sintió el frío de la madrugada y se arrepintió de haber abandonado el sueño. Pero Úrsula, que era más práctica, le ordenó que fuera a reconocer los límites de la propiedad. Aureliano Buendía salió a galope, con las espuelas clavadas en los flancos del caballo, y regresó a mediodía con los ojos enrojecidos por el sol, la ropa hecha jirones y la frente surcada de sudor. Traía consigo la certeza de que habían llegado al fin del mundo."]
+    mensaje = [False, "[Serpiente]: La tierra, recién salida del barro, olía a hierba húmeda. Aureliano Buendía sintió el frío de la madrugada y se arrepintió de haber abandonado el sueño. Pero Úrsula, que era más práctica, le ordenó que fuera a reconocer los límites de la propiedad. Aureliano Buendía salió a galope, con las espuelas clavadas en los flancos del caballo, y regresó a mediodía con los ojos enrojecidos por el sol, la ropa hecha jirones y la frente surcada de sudor. Traía consigo la certeza de que habían llegado al fin del mundo."]
     lista_mensajes.append(mensaje)
     sublista += 1
     seccion_escritura, lista_mensajes = dividir_mensaje(lista_mensajes, ancho_pantalla, sublista, 
