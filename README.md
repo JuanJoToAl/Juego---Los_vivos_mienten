@@ -78,13 +78,9 @@ flowchart TD
     n3{"¿Ua opción seleccionada es&nbsp; dinero?"} -- No --> n4{"¿La opción seleccionada es bolígrafo o diario?"}
     n12 --> n3
     n3 -- Si --> n8[["taxi"]]
-    n4 -- Si --> n13["8Diálogo)- No creo que esto me sriva"]
+    n4 -- Si --> n13["(Diálogo)- No creo que esto me sriva"]
     n13 --> n12
     n4 --> n14[["Escribir"]]
-      n10["(Diálogo) -Ya me pago señor, puede bajarse"]
-      n7["(Diálogo) -No creo que pueda pagar con esto"]
-
-
 
 ```
 ### Función mochila
