@@ -1,6 +1,6 @@
 # Proyecto programación
 # Índice
-1. [Pseudocódigo](#pseudocódigo)
+1. [Diagrama de flujo](#diagrama-de-flujo)
     1. [Estructuar general del juego](#estructuar-general-del-juego)
     2. [Función imprimir_mensaje](#función-imprimir_mensaje)
     3. [Función imprimir_animacion](#función-imprimir_animacion)
@@ -8,7 +8,7 @@
     5. [Función taxi](#función-taxi)
     6. [Función diario](#función-diario)
 
-## Pseudocódigo
+## Diagrama de flujo
 La siguiente sección contiene el diagrama de flujo del juego. Se empieza con una estrucutar general y seguida de esta se presentan las explicaciones específicas
 ### Estructuar general del juego
 ```mermaid
