@@ -4,6 +4,9 @@
     1. [Estructuar general del juego](#estructuar-general-del-juego)
     2. [Función imprimir_mensaje](#función-imprimir_mensaje)
     3. [Función imprimir_animacion](#función-imprimir_animacion)
+    4. [Estructura mecánicas del juego](#estructura-mecanicas-del-juego)
+    5. [Función taxi](#función-taxi)
+    6. [Función diario](#función-diario)
 
 ## Pseudocódigo
 La siguiente sección contiene el diagrama de flujo del juego. Se empieza con una estrucutar general y seguida de esta se presentan las explicaciones específicas
@@ -116,7 +119,7 @@ flowchart TD
 
 ```
 
-### Función Diario
+### Función diario
 ```mermaid
 flowchart TD
     A[[diario]]
