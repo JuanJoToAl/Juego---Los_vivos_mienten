@@ -5,8 +5,9 @@
     2. [Función imprimir_mensaje](#función-imprimir_mensaje)
     3. [Función imprimir_animacion](#función-imprimir_animacion)
     4. [Estructura mecánicas del juego](#estructura-mecanicas-del-juego)
-    5. [Función taxi](#función-taxi)
-    6. [Función diario](#función-diario)
+    5. [Función mochila](#función-mochila)
+    6. [Función taxi](#función-taxi)
+    7. [Función diario](#función-diario)
 
 ## Diagrama de flujo
 La siguiente sección contiene el diagrama de flujo del juego. Se empieza con una estrucutar general y seguida de esta se presentan las explicaciones específicas
