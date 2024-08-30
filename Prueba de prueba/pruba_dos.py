@@ -87,8 +87,6 @@ def imprimir_mensaje(seccion_escritura, lista_mensajes : list, linea_actual,
            
     return linea_actual, rango_mensaje
 
-
-
 def mover_cursor(linea_actual, rango_mensaje, lista_mensajes):
 
     #Codigo ANSI para subir de linea
