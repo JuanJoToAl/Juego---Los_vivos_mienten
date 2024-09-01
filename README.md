@@ -31,8 +31,8 @@ flowchart TB
     C --> D{¿Hay arcos disponibles?}
     D-- Sí --> F{¿Hay mensajes por imprimir en el arco?}
         F -- Sí --> G[["Se divide el mensaje con función 'dividir_mensaje'"]]
-            G --> H[[Se establece la alineación del mensaje con función 'imprimir_seccion']]
-            H --> I[["Se imprime el mensaje con función 'imprimir_mensaje'"]]
+            G --> H[["Se imprime el mensaje con función 'imprimir_mensaje'"]]
+            H --> I[[Se establece la alineación del mensaje con función 'imprimir_seccion']]
             I --> J{¿Hay animaciones por imprimir?}
             J -- Sí --> K[["Se imprime la animación con función 'imprimir_animación'"]]
                 K --> L{¿Hay opciones de diálogo por imprimir?}
