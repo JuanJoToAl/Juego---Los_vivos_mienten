@@ -1,7 +1,7 @@
 # Proyecto programación
 # Índice
 1. [Historia](#historia)
-2. [Funcionamiento](#diagrama-de-flujo)
+2. [Funcionamiento](#funcionamiento)
     1. [Estructuar general del juego](#estructuar-general-del-juego)
         1. [Inicialización de variables para la ventana de juego](#inicialización-de-variables-para-la-ventana-de-juego)
         2. [Función imprimir_ventana](#función-imprimir_ventana)
@@ -15,6 +15,7 @@
 
 ## Historia
 Nombres tentativos: Sin tregua, Sombras de una muerte
+
 Resumen: El detective Mendoza tiene una vida normal resolviendo crímenes, hasta que sucede la muerte de un ser querido. En principio no significa mucho, un caso más en el historial. Pero esto le termina arrebatando lo que más quiere en el mundo y haciéndole reencontrarse con un viejo conocido.
 
 ## Funcionamiento
