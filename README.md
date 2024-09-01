@@ -20,7 +20,9 @@ Resumen: El detective Mendoza tiene una vida normal resolviendo crímenes, hasta
 
 ## Funcionamiento
 Versión de python requerida: 3.6 en adelanta
+
 Tipo de juego: Novela visual de arte ASCII
+
 La siguiente sección contiene el diagrama de flujo del juego. Se empieza con una estrucutar general y seguida de esta se presentan las explicaciones específicas
 ### Estructuar general del juego
 
