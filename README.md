@@ -335,9 +335,9 @@ flowchart TD
     n3{"¿Ua opción seleccionada es&nbsp; dinero?"} -- No --> n4{"¿La opción seleccionada es bolígrafo o diario?"}
     n12 --> n3
     n3 -- Si --> n8[["taxi"]]
-    n4 -- Si --> n13["(Diálogo)- No creo que esto me sriva"]
+    n4 -- no --> n13["(Diálogo)- No creo que esto me sirva"]
     n13 --> n12
-    n4 --> n14[["Escribir"]]
+    n4 -- si --> n14[["Escribir"]]
 
 ```
 ### Función mochila
