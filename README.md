@@ -418,7 +418,7 @@ if __name__ == "__main__":
             bolígrafo=True
             escribir(bolígrafo)
         elif papelesescribir=="2":
-            print("´No puedo comprometer las purebas´")
+            print("´No puedo comprometer las pruebas´")
         else:
             print("Por favor escoger una opción ")
             papelesescribir=True
