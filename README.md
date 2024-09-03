@@ -345,8 +345,40 @@ flowchart TD
 flowchart TD
     A[[mochila]]
 ```
-La función mochila se encarga de presentar al jugador su inventario, el cual es una lista.
-
+La función mochila se encarga de presentar al jugador su inventario, el cual es una lista. AL mostrarse al jugador, se le da la opción de escoger qué ítem usar.
+```python
+#Mochila
+#Con las otras funciones importadas, es simplemente dar las opciones y ejecutar la función que corresponde a la elección
+mochila=[dinero,diario,bolígrafo,cartera,lupa]
+def mochila (x:bool)->list:
+    while x==True:
+        print(mochila)
+        opciones=input("¿Qué quieres usar?\n\t(1).Dinero\n\t(2).Diario\n\t(3).Bolígrafo\n\t(4).Cartera\n\t(5)Lupa")
+        if opciones=="1":
+            x=dinero
+            dinero=taxi(x)
+        elif opciones=="2":
+            x=True
+            escribir(x)
+        elif opciones=="3":
+            papelescribir=True
+            while papelescribir==True:
+                papelescribir=input("¿En dónde quieres escribir?\n\t(1).Diario\n\t(2).Cartas")
+                if papelesescribir=="1":
+                    bolígrafo=True
+                    escribir(bolígrafo)
+                elif papelesescribir=="2":
+                    print("´No puedo comprometer las purebas´")
+                else:
+                    print("Por favor escoger una opción ")
+                    papelesescribir=True
+        elif opciones=="4":
+            x=True
+            cartera(x)
+        elif opciones=="5":
+            x=True
+            lupa(x)
+```
 ### Función taxi
 ```mermaid
 flowchart TD
