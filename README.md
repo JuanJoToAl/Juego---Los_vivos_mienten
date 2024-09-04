@@ -2,7 +2,7 @@
 # Índice
 1. [Historia](#historia)
 2. [Funcionamiento](#funcionamiento)
-    1. [Estructuar general del juego](#estructuar-general-del-juego)
+    1. [Estructura general del juego](#estructura-general-del-juego)
         1. [Inicialización de variables para la ventana de juego](#inicialización-de-variables-para-la-ventana-de-juego)
         2. [Función imprimir_ventana](#función-imprimir_ventana)
         3. [Función dividir_mensaje](#función-dividir_mensaje)
@@ -19,12 +19,12 @@ Nombres tentativos: Sin tregua, Sombras de una muerte
 Resumen: El detective Mendoza tiene una vida normal resolviendo crímenes, hasta que sucede la muerte de un ser querido. En principio no significa mucho, un caso más en el historial. Pero esto le termina arrebatando lo que más quiere en el mundo y haciéndole reencontrarse con un viejo conocido.
 
 ## Funcionamiento
-Versión de python requerida: 3.6 en adelanta
+Versión de python requerida: 3.6 en adelante
 
 Tipo de juego: Novela visual de arte ASCII
 
 La siguiente sección contiene el diagrama de flujo del juego. Se empieza con una estrucutar general y seguida de esta se presentan las explicaciones específicas
-### Estructuar general del juego
+### Estructura general del juego
 
 ```mermaid
 flowchart TB
@@ -50,7 +50,7 @@ flowchart TB
 
 ### Inicialización de variables para la ventana de juego
 Para la impresión de la ventana de juego se establece que:     
-* El ancho de la pantalla es de 80 racacteres.
+* El ancho de la pantalla es de 80 caracteres.
 * La altura de la ventana de diálogo es de 15 caracteres.
 * La altura de la ventana de interación es de 8 caractres.
 * El ancho máximo del texto impreso en la ventana de diálogo es de 60 caracteres.
