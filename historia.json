@@ -1,0 +1,125 @@
+{
+  "arco1": {
+    "titulo": "El Inicio",
+    "mensajes": [
+      {
+        "id": "mensaje1",
+        "texto": "Hora: 5:34 am - 5 de septiembre",
+        "orientacion": true
+      },
+      
+      {
+        "id": "mensaje2",
+        "texto": "Llego al parque en un taxi", 
+        "orientacion": true
+      },
+
+      {
+        "id": "menaje3",
+        "texto": "[Taxista] son 15.000 pesos",
+        "orientacion": false
+      },
+
+      {
+        "id": "mensaje4",
+        "texto": "[Diego Mendoza]: Ya le pago",
+        "orientacion": true,
+        "opciones": [
+          {
+            "id": "opcion1",
+            "mostrar_mochila": true,
+            "correcta": "a",
+            "texto": "No creo que pueda pagarle con esto" 
+          },
+          {
+            "id": "opcion2",
+            "ciclo": true,
+            "alternativas": ["si", "no"],
+            "correcta": "si", 
+            "tipo": "obligatorio",
+            "texto": "[Taxista]: Señor, ya me pagó, puede bajarse"
+          }
+        ]
+      },
+
+      {
+        "id": "mensaje5",
+        "texto": "[Diego Mendoza]: Me bajo del taxi y me acerco a la escena del crimen, el cuerpo se había cubierto con una manta. Al ver la ficha de la víctima me asalta un pensamiento, lo conozco, es mi amigo de la academia, es cierto que no pasamos mucho tiempo juntos, pero me da escalofríos saber cómo terminó así. Uno de los forenses me muestra la imagen de una carta abierta, la cual se sospecha que dejó el asesino.",
+        "opciones": [
+          {
+            "id": "opcion1",
+            "ciclo": true,
+            "alternativas": ["Si"],
+            "tipo": "unico",
+            "texto": "La carta decía: \\033[3mLos vivos mienten\\033[0m.\\nMe parece una cosa sin sentido, pero me intriga saber en qué problemas estaba metido Parra."
+          },
+          {
+            "id": "opcion2",
+            "ciclo": true,
+            "tipo": "reduccion",
+            "alternativas": [
+              {
+                "a) ¿Cómo murió la víctima?": "[Forense]: El cadáver presenta un hematoma grave en la parte trasera del cráneo producto de la caída post mortem. Se presume que la causa de muerte fueron dos impactos de bala entre la segunda y tercera costilla y uno en la sien.",
+                "b) ¿Desde hace cuánto está aquí el cadáver?": "[Forense]: Aproximadamente 5 horas.",
+                "c) ¿Algún sospechoso?": "[Forense]: Se siguen entrevistando testigos pero nada concluyente hasta el momento.",
+                "d) ¿Algún rastro del asesino?": "[Forense]: Junto al cuerpo se encontró el teléfono de la víctima con varias llamadas perdidas de un número no registrado y un ligero camino de huellas ensangrentadas pertenecientes a la víctima.",
+                "e) ¿Había testigos?": "Un habitante de calle y el celador que descubrió el cuerpo cuando iba a su turno de trabajo. Pero hasta el momento no han proporcionado información concluyente."
+              }
+            ]
+          }
+        ]
+      },
+
+      {
+        "id": "mensaje6",
+        "texto": "- Suena mi celular -",
+        "opciones": [
+          {
+            "id": "opcion1",
+            "ciclo": true,
+            "tipo": "obligatorio",
+            "alternativas": ["Contestar", "No contestar"],
+            "correcta": "Contestar", 
+            "texto": "- Continua sonido de celular -\\n[Diego Mendoza]: Ahhg, que fastidio."
+          }
+        ]
+      },
+
+      {
+        "id": "mensaje7",
+        "texto": "- Es mi hermano Marco, se escucha agitado. -" 
+      },
+
+      {
+        "id": "mensaje8",
+        "texto": "[Marco]: necesito que vengas a mi casa lo más pronto posible, el problema siguió." 
+      },
+
+      {
+        "id": "mensaje10",
+        "texto": "- Doy un suspiro de fastidio y llamo un taxi, quizás no debería ir -"
+      },
+
+      {
+       "id": "mensaje11", 
+       "texto": "Quizás no debería ir, ¿realmente debo ir?",
+       "opciones": [
+          {
+          "id": "opcion1",
+          "ciclo": true,
+          "alternativas": ["Sí","No"],
+          "tipo": "obligatorio",
+          "correcta": "Si", 
+          "texto": "Ya no puedo evitar llamar un taxi. Si no voy Marco no va a dejar de llamar"
+          }
+        ]
+      },
+
+      {
+        "id": "mensaje12", 
+        "texto": "[Diego Mendoza]: Llegó el taxi"
+      }
+    ]
+  }
+}
+
