@@ -7,19 +7,16 @@
         "texto": "Hora: 5:34 am - 5 de septiembre",
         "orientacion": true
       },
-      
       {
         "id": "mensaje2",
         "texto": "Llego al parque en un taxi", 
         "orientacion": true
       },
-
       {
-        "id": "menaje3",
+        "id": "mensaje3",
         "texto": "[Taxista] son 15.000 pesos",
         "orientacion": false
       },
-
       {
         "id": "mensaje4",
         "texto": "[Diego Mendoza]: Ya le pago",
@@ -41,10 +38,10 @@
           }
         ]
       },
-
       {
         "id": "mensaje5",
         "texto": "[Diego Mendoza]: Me bajo del taxi y me acerco a la escena del crimen, el cuerpo se había cubierto con una manta. Al ver la ficha de la víctima me asalta un pensamiento, lo conozco, es mi amigo de la academia, es cierto que no pasamos mucho tiempo juntos, pero me da escalofríos saber cómo terminó así. Uno de los forenses me muestra la imagen de una carta abierta, la cual se sospecha que dejó el asesino.",
+        "orientacion": true,
         "opciones": [
           {
             "id": "opcion1",
@@ -69,10 +66,10 @@
           }
         ]
       },
-
       {
         "id": "mensaje6",
         "texto": "- Suena mi celular -",
+        "orientacion": true,
         "opciones": [
           {
             "id": "opcion1",
@@ -84,25 +81,25 @@
           }
         ]
       },
-
       {
         "id": "mensaje7",
-        "texto": "- Es mi hermano Marco, se escucha agitado. -" 
+        "texto": "- Es mi hermano Marco, se escucha agitado. -",
+        "orientacion": true
       },
-
       {
         "id": "mensaje8",
-        "texto": "[Marco]: necesito que vengas a mi casa lo más pronto posible, el problema siguió." 
+        "texto": "[Marco]: necesito que vengas a mi casa lo más pronto posible, el problema siguió.",
+        "orientacion": false
       },
-
       {
-        "id": "mensaje10",
-        "texto": "- Doy un suspiro de fastidio y llamo un taxi, quizás no debería ir -"
+        "id": "mensaje9",
+        "texto": "- Doy un suspiro de fastidio y llamo un taxi, quizás no debería ir -",
+        "orientacion": true
       },
-
       {
-       "id": "mensaje11", 
+       "id": "mensaje10", 
        "texto": "Quizás no debería ir, ¿realmente debo ir?",
+       "orientacion": true,
        "opciones": [
           {
           "id": "opcion1",
@@ -114,10 +111,10 @@
           }
         ]
       },
-
       {
-        "id": "mensaje12", 
-        "texto": "[Diego Mendoza]: Llegó el taxi"
+        "id": "mensaje11", 
+        "texto": "[Diego Mendoza]: Llegó el taxi",
+        "orientacion": true
       }
     ]
   }

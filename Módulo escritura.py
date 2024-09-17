@@ -130,6 +130,7 @@ def imprimir_mensaje(seccion_escritura: list, lista_mensajes: list, linea_actual
         tuple: Una tupla que contiene la línea actual y el rango de mensaje
         actualizados.
     """
+    
     # Verificar si el mensaje en la sublista está activo para impresión
     if lista_mensajes[sublista][0] == True:
 
