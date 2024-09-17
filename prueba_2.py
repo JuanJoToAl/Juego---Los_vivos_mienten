@@ -1,10 +1,9 @@
+import json
 import os
 from time import sleep
 from copy import deepcopy
 
-
-def imprimir_ventana(ancho_pantalla : int, altura_dialogo : int, 
-                     altura_interaccion: int):
+def imprimir_ventana(ancho_pantalla : int):
     """
     Imprime una representación de una ventana de diálogo con una sección de
     interacción en la consola.
@@ -21,6 +20,12 @@ def imprimir_ventana(ancho_pantalla : int, altura_dialogo : int,
     Returns:
         None
     """
+    altura_dialogo = 15
+    altura_interaccion = 8  # Altura del área de interacción
+
+    linea_actual = deepcopy(altura_dialogo)
+    rango_mensaje = deepcopy(linea_actual)
+
     # Imprimir la línea superior de la ventana
     print("-" * (ancho_pantalla + 2))
     
@@ -38,8 +43,52 @@ def imprimir_ventana(ancho_pantalla : int, altura_dialogo : int,
     # Imprimir la línea inferior de la ventana
     print("-" * (ancho_pantalla + 2))
 
-def dividir_mensaje(lista_mensajes: list, ancho_pantalla: int,
-                    sublista: int):
+    return linea_actual, rango_mensaje
+
+def obtener_mensajes_arcos(linea_actual, rango_mensaje):
+    paquete_mensajes = []
+    # Se abre el archivo "historia.json" en modo lectura con codificación utf-8
+    with open("historia.json", "r", encoding="utf-8") as archivo:
+        # Se lee el contenido del archivo
+        contenido = archivo.read()
+
+    # Se carga el contenido JSON en un diccionario de datos
+    datos_lectura = json.loads(contenido)
+
+    # Recorremos el diccionario de datos
+    for _, contenido_arco in datos_lectura.items():
+
+        nombre_arco = _
+        contenido_mensajes = contenido_arco.get("mensajes")
+
+        for mensaje in contenido_mensajes:
+            paquete_mensajes.append(mensaje)
+
+        pasar_informacion(paquete_mensajes, linea_actual, rango_mensaje, 
+                          nombre_arco, datos_lectura)
+
+    return paquete_mensajes
+
+def pasar_informacion(paquete_mensajes, linea_actual, rango_mensaje, 
+                      nombre_arco, datos_lectura):
+
+    lista_secciones = []
+
+    ancho_pantalla = 80  # Definir el ancho de la pantalla
+
+    for paquete in paquete_mensajes:
+        mensaje_actual = (paquete.get("texto"))
+
+        seccion_escritura = dividir_mensaje(mensaje_actual, ancho_pantalla)
+        lista_secciones.append(seccion_escritura)
+        
+        orientacion_actual = (paquete.get("orientacion"))
+
+        linea_actual, rango_mensaje = imprimir_mensaje(orientacion_actual, seccion_escritura, ancho_pantalla, 
+                         linea_actual, rango_mensaje, lista_secciones, 
+                         nombre_arco, datos_lectura)
+
+def dividir_mensaje(mensaje_actual: str, ancho_pantalla: int):
     """
     Divide un mensaje en secciones según el ancho de pantalla disponible.
 
@@ -57,12 +106,8 @@ def dividir_mensaje(lista_mensajes: list, ancho_pantalla: int,
         tuple: Contiene la lista de secciones del mensaje dividido y la lista 
         de mensajes actualizada.
     """
-    # Obtener el mensaje de la sublista especificada
-    mensaje = lista_mensajes[sublista][1]
     
-    # Eliminar el mensaje original de la sublista
-    lista_mensajes[sublista].remove(lista_mensajes[sublista][1])
-    
+    ancho_pantalla = 80
     # Inicializar la lista para almacenar las secciones del mensaje
     seccion_escritura = []
     
@@ -77,36 +122,38 @@ def dividir_mensaje(lista_mensajes: list, ancho_pantalla: int,
     bandera = True
 
     # Bucle para dividir el mensaje en secciones según el ancho de texto
-    while recorrido < len(mensaje) and bandera:
+    while recorrido < len(mensaje_actual) and bandera:
+
         # Guardar el índice del último espacio antes del límite de ancho
-        if mensaje[contador] == " " and contador < ancho_texto:
+        if mensaje_actual[contador] == " " and contador < ancho_texto:
             indice = contador
         
         # Si se alcanza el ancho de texto, cortar mensaje y agregar a lista
         elif ancho_texto <= contador:
-            seccion_escritura.append(mensaje[:indice])
-            mensaje = mensaje[indice:].lstrip()  # Eliminar espacios al inicio
+            seccion_escritura.append(mensaje_actual[:indice])
+            
+            mensaje_actual = mensaje_actual[indice:].lstrip()  # Eliminar espacios al inicio
             recorrido = 0
             contador = 0
         
         # Si el mensaje restante es menor que el ancho de texto, agregar a la
         # lista
         
-        elif len(mensaje) < ancho_texto:
-            seccion_escritura.append(mensaje)
+        elif len(mensaje_actual) < ancho_texto:
+            seccion_escritura.append(mensaje_actual)
             bandera = False
         
         recorrido += 1
         contador += 1
 
-    # Agregar las secciones del mensaje dividido a la sublista correspondiente
-    lista_mensajes[sublista].append(seccion_escritura)
-
     # Devolver la lista de secciones y la lista de mensajes actualizada
-    return seccion_escritura, lista_mensajes
+    
+    return seccion_escritura
 
-def imprimir_mensaje(seccion_escritura: list, lista_mensajes: list, linea_actual: int,
-                     ancho_pantalla: int, sublista: int, rango_mensaje: int):
+def imprimir_mensaje(orientacion_actual: bool, seccion_escritura: list, ancho_pantalla: int, 
+                     linea_actual: int, rango_mensaje: int, lista_secciones: list, 
+                     nombre_arco: str, datos_lectura):
+
     """
     Imprime un mensaje sección por sección con un efecto de escritura.
 
@@ -129,13 +176,13 @@ def imprimir_mensaje(seccion_escritura: list, lista_mensajes: list, linea_actual
         tuple: Una tupla que contiene la línea actual y el rango de mensaje
         actualizados.
     """
-
     # Verificar si el mensaje en la sublista está activo para impresión
-    if lista_mensajes[sublista][0] == True:
-
+    if orientacion_actual == True:
+        
         # Mover el cursor y obtener la línea actual y rango de mensaje
         linea_actual, rango_mensaje = mover_cursor(linea_actual, rango_mensaje,
-                                                   lista_mensajes)
+                                                   lista_secciones, nombre_arco, 
+                                                   datos_lectura)
         
         print("| ", end="")  # Imprimir el delimitador inicial de la línea
 
@@ -145,9 +192,8 @@ def imprimir_mensaje(seccion_escritura: list, lista_mensajes: list, linea_actual
             # Imprimir cada carácter de la palabra con un efecto de escritura
             for caracter in palabra:
                 print(caracter, end="", flush=True)
-                sleep(0.02)  # Pausa breve para efecto de escritura
-            
-            # Borrar la pantalla después de imprimir una palabra
+                sleep(0.03)  # Pausa breve para efecto de escritura
+
             borrar_pantalla(ancho_pantalla)
 
             # Ajustar la línea actual y rango de mensaje después de la impresión
@@ -156,18 +202,20 @@ def imprimir_mensaje(seccion_escritura: list, lista_mensajes: list, linea_actual
 
             # Mover el cursor de nuevo para la siguiente palabra
             linea_actual, rango_mensaje = mover_cursor(linea_actual, rango_mensaje,
-                                                       lista_mensajes)
+                                                       lista_secciones, nombre_arco, 
+                                                       datos_lectura)
+
+            # Mover el cursor de nuevo para la siguiente palabra
             print("| ", end="")  # Imprimir el delimitador de la nueva línea
 
     else:
-        # Si el mensaje no está activo, borrar la pantalla
         borrar_pantalla(ancho_pantalla)
+
         linea_actual -= 1
 
         # Mover el cursor y obtener la línea actual y rango de mensaje
         linea_actual, rango_mensaje = mover_cursor(linea_actual, rango_mensaje,
-                                                   lista_mensajes)
-        print('\n', end="")  # Mover a la nueva línea sin imprimir nada
+                                                       lista_secciones, nombre_arco, datos_lectura)
 
         # Iterar sobre cada palabra en la sección de escritura
         for palabra in seccion_escritura:
@@ -176,9 +224,8 @@ def imprimir_mensaje(seccion_escritura: list, lista_mensajes: list, linea_actual
             # Imprimir cada carácter de la palabra con un efecto de escritura
             for caracter in palabra:
                 print(caracter, end="", flush=True)
-                sleep(0.02)  # Pausa breve para efecto de escritura
+                sleep(0.03)  # Pausa breve para efecto de escritura
 
-            # Borrar la pantalla después de imprimir una palabra
             borrar_pantalla(ancho_pantalla)
 
             # Ajustar la línea actual y rango de mensaje después de la impresión
@@ -187,12 +234,15 @@ def imprimir_mensaje(seccion_escritura: list, lista_mensajes: list, linea_actual
 
             # Mover el cursor de nuevo para la siguiente palabra
             linea_actual, rango_mensaje = mover_cursor(linea_actual, rango_mensaje,
-                                                       lista_mensajes)
-
+                                                       lista_secciones, nombre_arco, 
+                                                       datos_lectura)
+            
     # Retornar la línea actual y rango de mensaje actualizados
     return linea_actual, rango_mensaje
 
-def mover_cursor(linea_actual: int, rango_mensaje: int, lista_mensajes: list):
+def mover_cursor(linea_actual: int, rango_mensaje: int, 
+                 lista_secciones: list, nombre_arco: str, 
+                 datos_lectura):
     """
     Mueve el cursor hacia arriba en la consola y ajusta el rango del mensaje.
     
@@ -215,17 +265,19 @@ def mover_cursor(linea_actual: int, rango_mensaje: int, lista_mensajes: list):
 
     # Imprimir líneas vacías hasta alcanzar la línea actual
     for _ in range(linea_actual):
+
         # Si es la última línea y no es la 14, ajustar el rango del mensaje
         if _ == linea_actual - 1 and _ != 14:
-            print("")  # Imprimir línea vacía
-            rango_mensaje = rango_seccion(lista_mensajes, rango_mensaje)
+
+            rango_mensaje = rango_seccion(lista_secciones, rango_mensaje, nombre_arco, datos_lectura)
+            
         else:
             print("")  # Imprimir línea vacía
 
     # Devolver la línea actual y el rango de mensaje actualizados
     return linea_actual, rango_mensaje
 
-def rango_seccion(lista_mensajes: list, rango_mensaje: int):
+def rango_seccion(lista_secciones: list, rango_mensaje: int, nombre_arco, datos_lectura):
     """
     Ajusta el rango del mensaje a mostrar en la pantalla.
 
@@ -242,28 +294,31 @@ def rango_seccion(lista_mensajes: list, rango_mensaje: int):
     frase = 0     # Inicializa el índice de la frase actual
     i = 0         # Inicializa el índice de la línea actual
     seccion = 0   # Inicializa el índice de la sección actual
-   
+
     # Bucle para ajustar el rango de la sección a mostrar
     while i < 15 - rango_mensaje:
 
         # Comprueba si hay más secciones en el mensaje actual
-        if seccion < len(lista_mensajes[contador][1]):
-            
-            # Llama a imprimir_seccion para mostrar la sección actual
-            frase, seccion, i, contador, lista_mensajes = imprimir_seccion(
-                lista_mensajes, contador, frase, seccion, i)
-        else:
-            # Si no hay más secciones, imprime una línea vacía y avanza al siguiente
-            print("| " + " " * 18)
+        if seccion < len(lista_secciones[contador]):
 
+            # Llama a imprimir_seccion para mostrar la sección actual
+            frase, seccion, i, contador, lista_secciones = imprimir_seccion(lista_secciones, contador, frase, 
+                                                                            seccion, i, nombre_arco, datos_lectura)
+
+        else:
+            # Si no hay más secciones, imprime una línea vacía y avanza al
+            # siguiente
+            print("| " + " " * 18)
             contador += 1  # Avanza al siguiente mensaje
             frase = 0      # Reinicia el índice de la frase
             seccion = 0    # Reinicia el índice de la sección
-   
+
+    print("| " + " " * 18)
     return rango_mensaje  # Retorna el rango de mensaje ajustado
 
-def imprimir_seccion(lista_mensajes: list, contador: int, frase: int, 
-                     seccion: int, i: int):
+def imprimir_seccion(lista_secciones: list, contador: int, frase: int, 
+                     seccion: int, i: int, nombre_arco, datos_lectura):
+    
     """
     Imprime una sección de un mensaje basado en el estado actual y parámetros.
 
@@ -284,10 +339,11 @@ def imprimir_seccion(lista_mensajes: list, contador: int, frase: int,
                seccion, i, contador y lista_mensajes.
     """
     # Imprimir la línea del mensaje según el estado activo
-    if lista_mensajes[contador][0] == True:
-        print("| " + lista_mensajes[contador][1][frase])
+    if datos_lectura[nombre_arco]["mensajes"][contador]["orientacion"] == True:
+        print("| " + lista_secciones[contador][frase] )
+
     else:
-        print("| " + " " * 18 + lista_mensajes[contador][1][frase])
+        print("| " + " " * 18 + lista_secciones[contador][frase])
 
     # Actualizar los índices para la próxima sección
     frase += 1
@@ -295,7 +351,7 @@ def imprimir_seccion(lista_mensajes: list, contador: int, frase: int,
     i += 1
 
     # Devolver los valores actualizados
-    return frase, seccion, i, contador, lista_mensajes
+    return frase, seccion, i, contador, lista_secciones
 
 def borrar_pantalla(ancho_pantalla: int):
     """
@@ -321,55 +377,12 @@ def borrar_pantalla(ancho_pantalla: int):
         print("|" + " " * ancho_pantalla)
 
 if __name__ == "__main__":
-
     ancho_pantalla = 80  # Definir el ancho de la pantalla
-    altura_dialogo = 15  # Altura del área de diálogo
-    altura_interaccion = 8  # Altura del área de interacción
-
-    # Copiar valores para el seguimiento de la línea actual y rango del mensaje
-    linea_actual = deepcopy(altura_dialogo)
-    rango_mensaje = deepcopy(linea_actual)
-
+    
     # Limpiar la pantalla
     os.system('cls')
 
-    # Imprimir el marco de la ventana
-    imprimir_ventana(ancho_pantalla, altura_dialogo, altura_interaccion)
+    linea_actual, rango_mensaje = imprimir_ventana(ancho_pantalla)
 
-    # Lista de mensajes a procesar
-    lista_mensajes = [
-        [True, "[Serpiente]: Muchos años después, frente al pelotón de fusilamiento, el "
-               "coronel Aureliano Buendía había de recordar aquella tarde remota en que "
-               "su padre lo llevó a conocer el hielo."],
-        [False, "[Serpiente]: La tierra, recién salida del barro, olía a hierba húmeda. Aureliano Buendía sintió el frío de la madrugada y se arrepintió de haber abandonado el sueño. Pero Úrsula, que era más práctica, le ordenó que fuera a reconocer los límites de la propiedad. Aureliano Buendía salió a galope, con las espuelas clavadas en los flancos del caballo, y regresó a mediodía con los ojos enrojecidos por el sol, la ropa hecha jirones y la frente surcada de sudor. Traía consigo la certeza de que habían llegado al fin del mundo."]
-    ]
-   
-    sublista = 0  # Índice de la sublista actual en lista_mensajes
-
-    # Dividir el mensaje en secciones para imprimir
-    seccion_escritura, lista_mensajes = dividir_mensaje(
-        lista_mensajes, ancho_pantalla, sublista
-    )
-
-    # Imprimir el mensaje sección por sección
-    linea_actual, rango_mensaje = imprimir_mensaje(
-        seccion_escritura, lista_mensajes, linea_actual, ancho_pantalla, sublista, rango_mensaje
-    )
-
-    # Avanzar a la siguiente sublista
-    sublista += 1
-
-    # Dividir el siguiente mensaje en secciones para imprimir
-    seccion_escritura, lista_mensajes = dividir_mensaje(
-        lista_mensajes, ancho_pantalla, sublista
-    )
-
-    # Imprimir el siguiente mensaje sección por sección
-    linea_actual, rango_mensaje = imprimir_mensaje(
-        seccion_escritura, lista_mensajes, linea_actual, ancho_pantalla, sublista, rango_mensaje
-    )
-
-    
-
-
+    lista_mensajes = obtener_mensajes_arcos(linea_actual, rango_mensaje)
 

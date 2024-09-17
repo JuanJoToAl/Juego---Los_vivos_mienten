@@ -1,7 +1,7 @@
+import json
 import os
 from time import sleep
 from copy import deepcopy
-
 
 def imprimir_ventana(ancho_pantalla : int, altura_dialogo : int, 
                      altura_interaccion: int):
@@ -21,6 +21,13 @@ def imprimir_ventana(ancho_pantalla : int, altura_dialogo : int,
     Returns:
         None
     """
+    altura_interaccion = 8  # Altura del área de interacción
+    altura_dialogo = 15  # Altura del área de diálogo
+    
+    # Copiar valores para el seguimiento de la línea actual y rango del mensaje
+    linea_actual = deepcopy(altura_dialogo)
+    rango_mensaje = deepcopy(linea_actual)
+
     # Imprimir la línea superior de la ventana
     print("-" * (ancho_pantalla + 2))
     
@@ -38,8 +45,42 @@ def imprimir_ventana(ancho_pantalla : int, altura_dialogo : int,
     # Imprimir la línea inferior de la ventana
     print("-" * (ancho_pantalla + 2))
 
-def dividir_mensaje(lista_mensajes: list, ancho_pantalla: int,
-                    sublista: int):
+    return rango_mensaje, linea_actual
+
+def obtener_mensajes_arcos(ancho_pantalla):
+    lista_paquetes = []
+    # Se abre el archivo "historia.json" en modo lectura con codificación utf-8
+    with open("historia.json", "r", encoding="utf-8") as archivo:
+        # Se lee el contenido del archivo
+        contenido = archivo.read()
+
+    # Se carga el contenido JSON en un diccionario de datos
+    datos_lectura = json.loads(contenido)
+
+    # Recorremos el diccionario de datos
+    for _, contenido_arco in datos_lectura.items():
+        contenido_mensajes = contenido_arco.get("mensajes")
+        for mensaje in contenido_mensajes:
+            lista_paquetes.append(mensaje)
+
+        pasar_informacion(lista_paquetes, linea_actual, rango_mensaje, ancho_pantalla)
+
+    return lista_paquetes
+
+def pasar_informacion(lista_paquetes, linea_actual, rango_mensaje, ancho_pantalla):
+    lista_mensajes = []
+    lista_orientaciones = []
+
+    for paquete in lista_paquetes:
+        lista_mensajes.append(paquete.get("texto"))
+        lista_orientaciones.append(paquete.get("orientacion"))
+    print(lista_mensajes)
+    seccion_escritura, lista_mensajes = dividir_mensaje(lista_mensajes, ancho_pantalla, sublista)
+    imprimir_mensaje(seccion_escritura, lista_mensajes, linea_actual, ancho_pantalla, sublista, rango_mensaje)
+
+    return lista_mensajes, lista_orientaciones
+
+def dividir_mensaje(lista_mensajes: list, ancho_pantalla: int, sublista: int):
     """
     Divide un mensaje en secciones según el ancho de pantalla disponible.
 
@@ -248,7 +289,7 @@ def rango_seccion(lista_mensajes: list, rango_mensaje: int):
 
         # Comprueba si hay más secciones en el mensaje actual
         if seccion < len(lista_mensajes[contador][1]):
-            
+
             # Llama a imprimir_seccion para mostrar la sección actual
             frase, seccion, i, contador, lista_mensajes = imprimir_seccion(
                 lista_mensajes, contador, frase, seccion, i)
@@ -335,39 +376,12 @@ if __name__ == "__main__":
 
     # Imprimir el marco de la ventana
     imprimir_ventana(ancho_pantalla, altura_dialogo, altura_interaccion)
-
-    # Lista de mensajes a procesar
-    lista_mensajes = [
-        [True, "[Serpiente]: Muchos años después, frente al pelotón de fusilamiento, el "
-               "coronel Aureliano Buendía había de recordar aquella tarde remota en que "
-               "su padre lo llevó a conocer el hielo."],
-        [False, "[Serpiente]: La tierra, recién salida del barro, olía a hierba húmeda. Aureliano Buendía sintió el frío de la madrugada y se arrepintió de haber abandonado el sueño. Pero Úrsula, que era más práctica, le ordenó que fuera a reconocer los límites de la propiedad. Aureliano Buendía salió a galope, con las espuelas clavadas en los flancos del caballo, y regresó a mediodía con los ojos enrojecidos por el sol, la ropa hecha jirones y la frente surcada de sudor. Traía consigo la certeza de que habían llegado al fin del mundo."]
-    ]
+    obtener_mensajes_arcos(ancho_pantalla)
    
     sublista = 0  # Índice de la sublista actual en lista_mensajes
 
-    # Dividir el mensaje en secciones para imprimir
-    seccion_escritura, lista_mensajes = dividir_mensaje(
-        lista_mensajes, ancho_pantalla, sublista
-    )
-
-    # Imprimir el mensaje sección por sección
-    linea_actual, rango_mensaje = imprimir_mensaje(
-        seccion_escritura, lista_mensajes, linea_actual, ancho_pantalla, sublista, rango_mensaje
-    )
-
     # Avanzar a la siguiente sublista
     sublista += 1
-
-    # Dividir el siguiente mensaje en secciones para imprimir
-    seccion_escritura, lista_mensajes = dividir_mensaje(
-        lista_mensajes, ancho_pantalla, sublista
-    )
-
-    # Imprimir el siguiente mensaje sección por sección
-    linea_actual, rango_mensaje = imprimir_mensaje(
-        seccion_escritura, lista_mensajes, linea_actual, ancho_pantalla, sublista, rango_mensaje
-    )
 
     
 
