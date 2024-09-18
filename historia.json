@@ -68,7 +68,7 @@
       },
       {
         "id": "mensaje6",
-        "texto": "- Suena mi celular -",
+        "texto": "- Suena mi celular -\n",
         "orientacion": true,
         "opciones": [
           {
