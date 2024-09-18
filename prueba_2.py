@@ -23,7 +23,9 @@ def imprimir_ventana(ancho_pantalla : int):
     altura_dialogo = 15
     altura_interaccion = 8  # Altura del área de interacción
 
-    linea_actual = deepcopy(altura_dialogo)
+    #linea_actual = deepcopy(altura_dialogo)
+    linea_actual = 5
+
     rango_mensaje = deepcopy(linea_actual)
 
     # Imprimir la línea superior de la ventana
