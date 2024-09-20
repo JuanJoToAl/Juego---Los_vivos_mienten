@@ -80,6 +80,41 @@
             "texto": "- Continua sonido de celular -\\n[Diego Mendoza]: Ahhg, que fastidio."
           }
         ]
+      },
+      {
+        "id": "mensaje7",
+        "texto": "- Es mi hermano Marco, se escucha agitado. -\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje8",
+        "texto": "[Marco]: necesito que vengas a mi casa lo más pronto posible, el problema siguió.\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje9",
+        "texto": "- Doy un suspiro de fastidio y llamo un taxi, quizás no debería ir -\n",
+        "orientacion": true
+      },
+      {
+       "id": "mensaje10", 
+       "texto": "Quizás no debería ir, ¿realmente debo ir?\n",
+       "orientacion": true,
+       "opciones": [
+          {
+          "id": "opcion1",
+          "ciclo": true,
+          "alternativas": ["Sí","No"],
+          "tipo": "obligatorio",
+          "correcta": "Si", 
+          "texto": "Ya no puedo evitar llamar un taxi. Si no voy Marco no va a dejar de llamar"
+          }
+        ]
+      },
+      {
+        "id": "mensaje11", 
+        "texto": "[Diego Mendoza]: Llegó el taxi\n",
+        "orientacion": true
       }
     ]
   }
