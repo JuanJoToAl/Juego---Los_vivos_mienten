@@ -47,7 +47,7 @@ def imprimir_ventana( ):
 def obtener_mensajes_arcos(linea_actual):
     paquete_mensajes = []
     # Se abre el archivo "historia.json" en modo lectura con codificación utf-8
-    with open("historia.json", "r", encoding="utf-8") as archivo:
+    with open("historia_prueba.json", "r", encoding="utf-8") as archivo:
         # Se lee el contenido del archivo
         contenido = archivo.read()
 
@@ -150,9 +150,9 @@ def imprimir_mensaje(secciones_mensajes: list, linea_actual: int,
                     print(caracter, end="", flush=True)
                     sleep(0.02)  # Pausa breve para efecto de escritura
 
-                # print(f"                                                                            {lista_secciones}")
+                print(f"                                                                            lc{linea_actual}cs{cantidad_seccion}")
 
-                # sleep(3) 
+                #sleep(3) 
 
                 borrar_pantalla( )
 
@@ -198,9 +198,9 @@ def imprimir_mensaje(secciones_mensajes: list, linea_actual: int,
                 for caracter in seccion:
                     print(caracter, end="", flush=True)
                     sleep(0.02)  # Pausa breve para efecto de escritura
-                # print(f"                                                                            {lista_secciones}")
+                print(f"                                                                            lc{linea_actual}cs{cantidad_seccion}")
 
-                # sleep(3) 
+                #sleep(3) 
 
                 borrar_pantalla( )
 
@@ -230,18 +230,10 @@ def restar_linea(linea_actual, cantidad_seccion, constante_rango):
     if linea_actual != 1 and cantidad_seccion != 10:
         linea_actual -= 1
 
-    elif linea_actual == 1 and cantidad_seccion == 10:
+    elif linea_actual == 1 and cantidad_seccion == 7:
         linea_actual = 2
-        cantidad_seccion = 10
+        constante_rango = 0
 
-    elif linea_actual == 2 and cantidad_seccion == 10:
-        linea_actual = 1
-        cantidad_seccion = 11
-
-    elif linea_actual == 1 and cantidad_seccion == 11:
-        linea_actual = 2
-        cantidad_seccion = 10
-        #constante_rango = 0
 
     return linea_actual, cantidad_seccion, constante_rango
 
@@ -414,4 +406,3 @@ if __name__ == "__main__":
     linea_actual = imprimir_ventana( )
 
     lista_mensajes = obtener_mensajes_arcos(linea_actual)
-
