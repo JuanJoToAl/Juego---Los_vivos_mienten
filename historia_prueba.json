@@ -21,22 +21,12 @@
         "id": "mensaje4",
         "texto": "[Diego Mendoza]: Ya le pago\n",
         "orientacion": true,
-        "opciones": [
-          {
-            "id": "opcion1",
-            "mostrar_mochila": true,
-            "correcta": "a",
-            "texto": "No creo que pueda pagarle con esto\n" 
-          },
-          {
-            "id": "opcion2",
-            "ciclo": true,
-            "alternativas": ["si", "no"],
-            "correcta": "si", 
-            "tipo": "obligatorio",
-            "texto": "[Taxista]: Señor, ya me pagó, puede bajarse\n"
-          }
-        ]
+        "alternativas": {
+          "a": ["¿Cómo murió la víctima?     ", "[Forense]: El cadáver presenta un hematoma en occipucio.\n"],
+          "b": ["¿Desde hace cuánto está aquí el cadáver?\n| ", "[Forense]: Aproximadamente 5 horas.\n"],
+          "c": ["¿Algún sospechoso?          ", "[Forense]: Se siguen entrevistando testigos .\n"],
+          "d": ["¿Algún rastro del asesino?", "[Forense]: Junto al cuerpo se encontró el teléfono.\n"]
+        }
       },
       {
         "id": "mensaje5",
@@ -82,15 +72,7 @@
         "id": "mensaje6",
         "texto": "otra prueba\n",
         "orientacion": true,
-        "opciones": [
-          {
-            "id": "opcion1",
-            "ciclo": true,
-            "alternativas": ["Si"],
-            "tipo": "unico",
-            "texto": "La carta decía: \\033[3mLos vivos mienten\\033[0m.\\nMe parece una cosa sin sentido, pero me intriga saber en qué problemas estaba metido Parra."
-          },
-          {
+        "opciones": {
             "id": "opcion2",
             "ciclo": true,
             "tipo": "reduccion",
@@ -104,22 +86,12 @@
               }
             ]
           }
-        ]
       },
       {
         "id": "mensaje6",
         "texto": "- Suena mi celular -\n",
-        "orientacion": true,
-        "opciones": [
-          {
-            "id": "opcion1",
-            "ciclo": true,
-            "tipo": "obligatorio",
-            "alternativas": ["Contestar", "No contestar"],
-            "correcta": "Contestar", 
-            "texto": "- Continua sonido de celular -\\n[Diego Mendoza]: Ahhg, que fastidio."
-          }
-        ]
+        "orientacion": true
+
       },
       {
         "id": "mensaje7",
@@ -139,17 +111,7 @@
       {
        "id": "mensaje10", 
        "texto": "Quizás no debería ir, ¿realmente debo ir?\n",
-       "orientacion": true,
-       "opciones": [
-          {
-          "id": "opcion1",
-          "ciclo": true,
-          "alternativas": ["Sí","No"],
-          "tipo": "obligatorio",
-          "correcta": "Si", 
-          "texto": "Ya no puedo evitar llamar un taxi. Si no voy Marco no va a dejar de llamar"
-          }
-        ]
+       "orientacion": true
       },
       {
         "id": "mensaje11", 
