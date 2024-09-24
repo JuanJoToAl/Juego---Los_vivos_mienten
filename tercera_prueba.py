@@ -66,13 +66,78 @@ def obtener_mensajes_arcos(linea_actual):
 
         bandera_arco = True
 
+        (bandera_arco, 
+         contador_arcos, nombres_arcos) = terminar_juego(bandera_arco, contador_arcos, 
+                                                         nombres_arcos)
+
         while bandera_arco == True:
             (arco_actual, lista_avance, 
              contador_arcos, bandera_arco) = restaurar_arco(contador_arcos, lista_avance, 
-                                                            arco_actual, nombres_arcos, bandera_arco)
-                                                                   
+                                                            arco_actual, nombres_arcos, 
+                                                            bandera_arco)
+            
+    linea = 22
+    posicionar_linea(linea)
+    for _ in range(2):
+        print("|"+" " * 80)
 
-    return paquete_mensajes
+    linea = 1
+    posicionar_linea(linea)                                                      
+    mensaje_final = ("| Gracias por jugar. ¡Hasta la próxima!\n\n"
+                     "| Créditos:\n| Programado y escrito por:"
+                     " Juan José Tobar y Jospeh Lievano")
+
+    for caracter in mensaje_final:
+        print(caracter, end="", flush=True)
+        sleep(0.03)
+
+    linea = 26
+    posicionar_linea(linea)  
+
+    return None
+
+def terminar_juego(bandera_arco, contador_arcos, nombres_arcos):
+    LINE_UP = '\033[1A'
+    marcador = True
+
+    while bandera_arco == True and marcador == True:
+
+        linea = 22
+        posicionar_linea(linea)
+        for _ in range(2):
+            print("|"+" " * 80)
+        for _ in range(2):
+            print(LINE_UP, end="")
+
+        respuesta = input("| ¿Quiere cerrar el juego? (si ; no):")
+
+        if respuesta.lower().replace(" ", "") == "si":
+            bandera_arco = False
+            marcador = False
+            contador_arcos = len(nombres_arcos)
+
+        elif respuesta.lower().replace(" ", "") == "no":
+
+            bandera_arco = True
+            marcador = False
+
+        else: 
+            linea = 22
+            posicionar_linea(linea)
+            for _ in range(2):
+                print("|"+ " " * 80)
+
+            for _ in range(2):
+                print(LINE_UP, end="")
+
+            msg_no_valido = "| Seleccione una opcion válida"
+            for caracter in msg_no_valido:
+                print(caracter, end="", flush=True)
+                sleep(0.02)
+
+            input("\n| Presione enter para continuar:")
+    
+    return bandera_arco, contador_arcos, nombres_arcos
 
 def restaurar_arco(contador_arcos, lista_avance, arco_actual, nombres_arcos, bandera_arco):
     
@@ -119,12 +184,18 @@ def restaurar_arco(contador_arcos, lista_avance, arco_actual, nombres_arcos, ban
 
             input("\n| Presione enter para continuar:")
 
-    elif respuesta.lower().replace(" ", "") == "no":
+    elif (respuesta.lower().replace(" ", "") == "no" 
+          and contador_arcos < len(nombres_arcos)):
+        
         arco_actual = nombres_arcos[contador_arcos]
         
         linea = 22
         posicionar_linea(linea)
         print("|"+" " * 80) 
+
+        bandera_arco = False
+    
+    elif contador_arcos == len(nombres_arcos):
 
         bandera_arco = False
 
@@ -499,5 +570,4 @@ if __name__ == "__main__":
     os.system('cls')
 
     linea_actual = imprimir_ventana( )
-
-    lista_mensajes = obtener_mensajes_arcos(linea_actual)
+    obtener_mensajes_arcos(linea_actual)
