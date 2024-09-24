@@ -64,26 +64,31 @@ def obtener_mensajes_arcos(linea_actual):
 
         contador_arcos += 1
 
-        arco_actual, lista_avance, contador_arcos = restaurar_arco(contador_arcos, lista_avance, 
-                                                                   arco_actual, nombres_arcos)
+        bandera_arco = True
+
+        while bandera_arco == True:
+            (arco_actual, lista_avance, 
+             contador_arcos, bandera_arco) = restaurar_arco(contador_arcos, lista_avance, 
+                                                            arco_actual, nombres_arcos, bandera_arco)
                                                                    
 
     return paquete_mensajes
 
-def restaurar_arco(contador_arcos, lista_avance, arco_actual, nombres_arcos):
+def restaurar_arco(contador_arcos, lista_avance, arco_actual, nombres_arcos, bandera_arco):
     
     LINE_UP = '\033[1A'
 
-    linea = 23
+    linea = 22
     posicionar_linea(linea)
-    print("|"+" " * 80)
-    print(LINE_UP, end="")
-    print(LINE_UP, end="")
+    for _ in range(2):
+        print("|"+" " * 80)
+    for _ in range(2):
+        print(LINE_UP, end="")
 
-    respuesta = input("| ¿Quiere regresar a un arco anterior?:")
+    respuesta = input("| ¿Quiere regresar a un arco? (si ; no):")
 
     if respuesta.lower().replace(" ", "") == "si":
-        punto_retroceso = input("| ¿A cuál arco quiere regresar:")
+        punto_retroceso = input("| ¿A cuál arco quiere regresar?:")
 
         if punto_retroceso.lower().replace(" ", "") in lista_avance:
 
@@ -96,17 +101,37 @@ def restaurar_arco(contador_arcos, lista_avance, arco_actual, nombres_arcos):
             print("|"+" " * 80)
             print("|"+" " * 80)
 
-        else:
-            print("| La solicitud no se encuentra disponible")
+            bandera_arco = False
 
-    else: 
+        else:
+            linea = 22
+            posicionar_linea(linea)
+            for _ in range(2):
+                print("|"+ " " * 80)
+            for _ in range(2):
+                print(LINE_UP, end="")
+
+            msg_no_hallado = "| La solicitud no se encuentra disponible"
+
+            for caracter in msg_no_hallado:
+                print(caracter, end="", flush=True)
+                sleep(0.02)
+
+            input("\n| Presione enter para continuar:")
+
+    elif respuesta.lower().replace(" ", "") == "no":
         arco_actual = nombres_arcos[contador_arcos]
         
         linea = 22
         posicionar_linea(linea)
         print("|"+" " * 80) 
 
-    return arco_actual, lista_avance, contador_arcos
+        bandera_arco = False
+
+    else: 
+        None
+
+    return arco_actual, lista_avance, contador_arcos, bandera_arco
 
 def imprimir_nombre_arco(nombre_arco):
     linea = 1
@@ -207,14 +232,28 @@ def recorrer_alternativas(alternativas, linea_actual, cantidad_seccion,
             
             linea = 22
             posicionar_linea(linea)
-            print("| Seleccione una opcion válida")
-            input("| Presione enter para continuar:")
+            for _ in range(2):
+                print("|"+ " " * 80)
+
+            for _ in range(2):
+                print(LINE_UP, end="")
+
+            msg_no_valido = "| Seleccione una opcion válida"
+            for caracter in msg_no_valido:
+                print(caracter, end="", flush=True)
+                sleep(0.02)
+
+            input("\n| Presione enter para continuar:")
+            
+            linea = 22
+            posicionar_linea(linea)
+            for _ in range(2):
+                print("|"+ " " * 80)
 
             linea = 17
             posicionar_linea(linea)
-
             for _ in range(4):
-                print("|"+" " * 80)
+                print("|"+ " " * 80)
 
             for _ in range(4):
                 print(LINE_UP, end="")

@@ -12,6 +12,17 @@
         "texto": "Llego al parque en un taxi\n", 
         "orientacion": true,
         "imagen" : "taxi.txt"
+      },
+      {
+        "id": "mensaje4",
+        "texto": "[Diego Mendoza]: Ya le pago\n",
+        "orientacion": true,
+        "alternativas": {
+          "a": ["¿Cómo murió la víctima?\n", "[Forense]: El cadáver presenta un hematoma en occipucio.\n"],
+          "b": ["¿Desde hace cuánto está aquí el cadáver?\n", "[Forense]: Aproximadamente 5 horas.\n"],
+          "c": ["¿Algún sospechoso?\n", "[Forense]: Se siguen entrevistando testigos .\n"],
+          "d": ["¿Algún rastro del asesino?\n", "[Forense]: Junto al cuerpo se encontró el teléfono.\n"]
+        }
       }
     ]
   },
@@ -46,6 +57,12 @@
         "id": "mensaje11", 
         "texto": "[Diego Mendoza]: Llegó el taxi\n",
         "orientacion": true
+      },
+      {
+        "id": "mensaje3",
+        "texto": "[Taxista] son 15.000 pesos\n",
+        "orientacion": false,
+        "imagen" : "dormir.txt"
       }
     ]
   }
