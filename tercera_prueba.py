@@ -40,21 +40,73 @@ def obtener_mensajes_arcos(linea_actual):
     # Se carga el contenido JSON en un diccionario de datos
     datos_lectura = json.loads(contenido)
 
-    # Recorremos el diccionario de datos
-    for nombre_arco, contenido_arco in datos_lectura.items():
+    contador_arcos = 0
+    nombres_arcos = list(datos_lectura.keys())
+    lista_avance = []
+    arco_actual = nombres_arcos[contador_arcos]
 
-        imprimir_nombre_arco(nombre_arco)
-        contenido_mensajes = contenido_arco.get("mensajes")
+    while contador_arcos < len(nombres_arcos):
+    # for nombre_arco, contenido_arco in datos_lectura.items():
+
+        imprimir_nombre_arco(arco_actual)
+        lista_avance.append(arco_actual)
+
+        contenido_mensajes = datos_lectura[arco_actual].get("mensajes")
 
         cantidad_seccion = 0
+
+        paquete_mensajes = []
 
         for mensaje in contenido_mensajes:
             paquete_mensajes.append(mensaje)
 
         pasar_informacion(paquete_mensajes, linea_actual, cantidad_seccion)
 
+        contador_arcos += 1
+
+        arco_actual, lista_avance, contador_arcos = restaurar_arco(contador_arcos, lista_avance, 
+                                                                   arco_actual, nombres_arcos)
+                                                                   
 
     return paquete_mensajes
+
+def restaurar_arco(contador_arcos, lista_avance, arco_actual, nombres_arcos):
+    
+    LINE_UP = '\033[1A'
+
+    linea = 23
+    posicionar_linea(linea)
+    print("|"+" " * 80)
+    print(LINE_UP, end="")
+    print(LINE_UP, end="")
+
+    respuesta = input("| ¿Quiere regresar a un arco anterior?:")
+
+    if respuesta.lower().replace(" ", "") == "si":
+        punto_retroceso = input("| ¿A cuál arco quiere regresar:")
+
+        if punto_retroceso.lower().replace(" ", "") in lista_avance:
+
+            arco_actual = punto_retroceso.lower().replace(" ", "")
+
+            contador_arcos = lista_avance.index(punto_retroceso.lower().replace(" ", ""))
+
+            linea = 22
+            posicionar_linea(linea)
+            print("|"+" " * 80)
+            print("|"+" " * 80)
+
+        else:
+            print("| La solicitud no se encuentra disponible")
+
+    else: 
+        arco_actual = nombres_arcos[contador_arcos]
+        
+        linea = 22
+        posicionar_linea(linea)
+        print("|"+" " * 80) 
+
+    return arco_actual, lista_avance, contador_arcos
 
 def imprimir_nombre_arco(nombre_arco):
     linea = 1
@@ -72,7 +124,7 @@ def imprimir_nombre_arco(nombre_arco):
     input("| Presione enter para continuar:")
 
 def pasar_informacion(paquete_mensajes, linea_actual, cantidad_seccion):
-
+    
     lista_secciones = []
 
     constante_linea =  1
@@ -110,6 +162,7 @@ def pasar_informacion(paquete_mensajes, linea_actual, cantidad_seccion):
             (linea_actual, cantidad_seccion, 
             constante_linea, constante_rango,  lista_secciones) = recorrer_alternativas(alternativas, linea_actual, 
                                                                                        cantidad_seccion, constante_linea, constante_rango, lista_secciones)
+
 
     borrar_pantalla( )
 
@@ -188,7 +241,7 @@ def imprimir_alternativas(alternativas):
         print("|" + " " * 70)
 
     print(LINE_UP, end="")
-    opcion = input("| Seleccione una opción:").lower()
+    opcion = input("| Seleccione una opción:").lower().replace(" ", "")
 
     return opcion, alternativas
 
