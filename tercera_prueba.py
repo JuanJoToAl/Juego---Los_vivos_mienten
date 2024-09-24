@@ -5,21 +5,7 @@ from copy import deepcopy
 
 # Constante rango si es cero cuando se llega al borde superior
 def imprimir_ventana( ):
-    """
-    Imprime una representación de una ventana de diálogo con una sección de
-    interacción en la consola.
-    
 
-    Args:
-
-        altura_dialogo (int): La altura de la sección de diálogo de la ventana.
-
-        altura_interaccion (int): La altura de la sección de interacción de la
-        ventana.
-        
-    Returns:
-        None
-    """
     altura_dialogo = 15
     altura_interaccion = 8  # Altura del área de interacción
 
@@ -55,8 +41,9 @@ def obtener_mensajes_arcos(linea_actual):
     datos_lectura = json.loads(contenido)
 
     # Recorremos el diccionario de datos
-    for _, contenido_arco in datos_lectura.items():
+    for nombre_arco, contenido_arco in datos_lectura.items():
 
+        imprimir_nombre_arco(nombre_arco)
         contenido_mensajes = contenido_arco.get("mensajes")
 
         cantidad_seccion = 0
@@ -66,7 +53,23 @@ def obtener_mensajes_arcos(linea_actual):
 
         pasar_informacion(paquete_mensajes, linea_actual, cantidad_seccion)
 
+
     return paquete_mensajes
+
+def imprimir_nombre_arco(nombre_arco):
+    linea = 1
+    posicionar_linea(linea)
+
+    nombre_arco = nombre_arco[:-1].capitalize() + " " + nombre_arco[-1::]
+    print("| ", end = "")
+
+    for caracter in nombre_arco:
+        print(caracter, end="", flush=True)
+        sleep(0.1)
+
+    linea = 23
+    posicionar_linea(linea)
+    input("| Presione enter para continuar:")
 
 def pasar_informacion(paquete_mensajes, linea_actual, cantidad_seccion):
 
@@ -91,24 +94,26 @@ def pasar_informacion(paquete_mensajes, linea_actual, cantidad_seccion):
                                                               cantidad_seccion, lista_secciones, 
                                                               constante_linea, constante_rango)
         
-        #Posiciona la opción presione para continuar donde debe de ser
-        LINE_UP = '\033[1A'
+        linea = 23
+        posicionar_linea(linea)
 
-        for _ in range(100):
-            print(LINE_UP, end="")
-
-        # Imprimir líneas vacías hasta alcanzar la línea actual
-        for _ in range(23):
-            print("")
         input("| Presione enter para continuar:")
+
+        if paquete.get("imagen"):
+            archivo_imagen = paquete.get("imagen")
+            borrar_pantalla( )
+            imprimir_imagen(archivo_imagen )
 
         if paquete.get("alternativas"):
             alternativas = paquete.get("alternativas")
+
             (linea_actual, cantidad_seccion, 
-            constante_linea, constante_rango,  lista_secciones) = obtener_alternativas(alternativas, linea_actual, 
+            constante_linea, constante_rango,  lista_secciones) = recorrer_alternativas(alternativas, linea_actual, 
                                                                                        cantidad_seccion, constante_linea, constante_rango, lista_secciones)
 
-def obtener_alternativas(alternativas, linea_actual, cantidad_seccion, 
+    borrar_pantalla( )
+
+def recorrer_alternativas(alternativas, linea_actual, cantidad_seccion, 
                          constante_linea, constante_rango, lista_secciones):
 
     LINE_UP = '\033[1A'
@@ -116,18 +121,10 @@ def obtener_alternativas(alternativas, linea_actual, cantidad_seccion,
     #Posiciona la opción presione para continuar donde debe de ser
     linea = 17
     posicionar_linea(linea)
-    print("|", end = " ")
-    for clave, valor in alternativas.items():
-        print(f"{clave}) {valor[0]}", end = "")
-
 
     while len(alternativas) != 0:
 
-        linea = 23
-        posicionar_linea(linea)
-        print(" " * 40)
-        print(LINE_UP, end="")
-        opcion = input("| Seleccione una opción:")
+        opcion, alternativas = imprimir_alternativas(alternativas)
 
         if opcion in alternativas:
 
@@ -147,25 +144,70 @@ def obtener_alternativas(alternativas, linea_actual, cantidad_seccion,
             linea = 17
             posicionar_linea(linea)
 
-            print(" " * 80)
-            print(" " * 80)
-            print(LINE_UP, end="")
-            print(LINE_UP, end="")
-            print("|", end = " ")
+            for _ in range(4):
+                print("|"+" " * 80)
 
-            for clave, valor in alternativas.items():
-                print(f"{clave}) {valor[0]}", end = "")
+            for _ in range(4):
+                print(LINE_UP, end="")
 
         else: 
-            print("\n")
-            print("Seleccione una opcion válida")
-            opcion = input("| Seleccione una opción")
+            
+            linea = 22
+            posicionar_linea(linea)
+            print("| Seleccione una opcion válida")
+            input("| Presione enter para continuar:")
+
+            linea = 17
+            posicionar_linea(linea)
+
+            for _ in range(4):
+                print("|"+" " * 80)
+
+            for _ in range(4):
+                print(LINE_UP, end="")
 
     linea = 23
     posicionar_linea(linea)
     print("|"+ " " * 40)
 
     return linea_actual, cantidad_seccion, constante_linea, constante_rango, lista_secciones
+
+def imprimir_alternativas(alternativas):
+    
+    LINE_UP = '\033[1A'
+    for clave, valor in alternativas.items():
+        posibilidad = "| " + clave + ") " + valor[0]
+
+        for caracter in posibilidad:
+            print(caracter, end="", flush=True)
+            sleep(0.02)
+
+    linea = 22
+    posicionar_linea(linea)
+    for _ in range(2):
+        print("|" + " " * 70)
+
+    print(LINE_UP, end="")
+    opcion = input("| Seleccione una opción:").lower()
+
+    return opcion, alternativas
+
+def imprimir_imagen(archivo_imagen):
+    
+    linea = 1
+    posicionar_linea(linea)
+
+    with open(archivo_imagen, 'r') as archivo:
+        arte_ascii = archivo.read()
+
+    for caracter in arte_ascii:
+        print(caracter, end="", flush=True)
+        sleep(0.005)
+    
+    linea = 23
+    posicionar_linea(linea)
+
+    input("| Presione enter para continuar:")
 
 def posicionar_linea(linea):
     LINE_UP = '\033[1A'
@@ -264,20 +306,7 @@ def imprimir_mensaje(linea_actual: int,
 def mover_cursor(linea_actual: int, cantidad_seccion: int, 
                  lista_secciones: list, 
                 constante_linea, constante_rango):
-    """
-    Mueve el cursor hacia arriba en la consola y ajusta el rango del mensaje.
-    
-    Args:
-        linea_actual (int): La línea actual desde donde se moverá el cursor.
 
-        cantidad_seccion (int): El rango actual del mensaje en la lista de mensajes.
-
-        lista_mensajes (list): Lista de mensajes que se está procesando.
-
-    Returns:
-        tuple: Una tupla que contiene la línea actual y el rango de mensaje 
-        actualizados.
-    """
     LINE_UP = '\033[1A'  # Secuencia de escape ANSI para mover el cursor arriba
     
     # Mover el cursor hacia arriba 100 líneas
@@ -329,18 +358,7 @@ def verificar_linea(linea_actual, constante_linea, constante_rango, lista_seccio
     return linea_actual, constante_linea, constante_rango, lista_secciones
 
 def rango_seccion(lista_secciones: list, cantidad_seccion: int, linea_actual):
-    """
-    Ajusta el rango del mensaje a mostrar en la pantalla.
 
-    Args:
-        lista_mensajes (list): Lista de listas que contiene los mensajes y 
-        sus respectivas secciones.
-
-        cantidad_seccion (int): Rango actual del mensaje a ser impreso.
-
-    Returns:
-        int: El rango del mensaje actual después de ajustar la sección.
-    """
     i = 0         # Inicializa el índice de la línea actual
     seccion = 0   # Inicializa el índice de la sección actual
 
@@ -358,24 +376,6 @@ def rango_seccion(lista_secciones: list, cantidad_seccion: int, linea_actual):
 
 def imprimir_seccion(lista_secciones: list, seccion: int, i: int):
     
-    """
-    Imprime una sección de un mensaje basado en el estado actual y parámetros.
-
-    Args:
-        lista_mensajes (list): Lista de listas que contiene los mensajes y 
-        su estado de visualización.
-
-        contador (int): Índice del mensaje en la lista que se está procesando.
-
-        seccion (int): Índice de la sección actual dentro del mensaje.
-
-        i (int): Línea actual en la pantalla donde se imprimirá el mensaje.
-
-    Returns:
-        tuple: Una tupla que contiene los valores actualizados
-               seccion, i, contador y lista_mensajes.
-    """
-    
     # Imprimir la línea del mensaje según el estado activo
     if lista_secciones[seccion][0] == True:
         print("| " + lista_secciones[seccion][1] )
@@ -388,14 +388,7 @@ def imprimir_seccion(lista_secciones: list, seccion: int, i: int):
     return seccion, i, lista_secciones
 
 def borrar_pantalla( ):
-    """
-    Borra el contenido de la pantalla simulando un efecto de desplazamiento.
-    
-    Args:
 
-    Returns:
-        None
-    """
     LINE_UP = '\033[1A'  # Secuencia de escape ANSI para mover el cursor hacia arriba
     
     # Mover el cursor hacia arriba 100 líneas
