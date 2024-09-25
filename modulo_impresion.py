@@ -36,7 +36,7 @@ def imprimir_ventana():
     
     return linea_actual
 
-def posicionar_linea(linea):
+def posicionar_linea(linea: int) -> None:
     """
     Posiciona el cursor en una línea específica en la consola.
 
@@ -56,7 +56,7 @@ def posicionar_linea(linea):
     for _ in range(linea):
         print("")  # Imprime una línea vacía.
 
-def imprimir_nombre_arco(nombre_arco):
+def imprimir_nombre_arco(nombre_arco: str) -> None:
     """
     Imprime el nombre de un arco con formato especial en la consola.
 
@@ -82,7 +82,7 @@ def imprimir_nombre_arco(nombre_arco):
     posicionar_linea(linea)  # Posiciona la línea en la salida.
     input("| Presione enter para continuar:")  # Espera a que el usuario presione Enter.
 
-def imprimir_alternativas(alternativas):
+def imprimir_alternativas(alternativas: dict) -> tuple:
     """
     Imprime las opciones disponibles con un efecto de escritura animada 
     y solicita al usuario que seleccione una de ellas.
@@ -119,7 +119,7 @@ def imprimir_alternativas(alternativas):
 
     return opcion, alternativas  # Devuelve la opción y alternativas restantes.
 
-def imprimir_imagen(archivo_imagen):
+def imprimir_imagen(archivo_imagen: str) -> None:
     """
     Imprime una imagen ASCII desde un archivo, carácter por carácter, con 
     un efecto de escritura progresiva. 
@@ -149,9 +149,9 @@ def imprimir_imagen(archivo_imagen):
     input("| Presione enter para continuar:")
 
 def imprimir_mensaje(linea_actual: int, cantidad_seccion: int, 
-                     lista_secciones: list, constante_linea, 
-                     constante_rango):
-    """
+                     lista_secciones: list, constante_linea: int, 
+                     constante_rango: int) -> tuple:
+    """              
     Imprime mensajes en la consola con un efecto de escritura caracter por 
     caracter. Se encarga de hacer el control de cuando limpiar la pantalla y
     mover el cursor a la posición correcta antes de imprimir cada mensaje.
@@ -250,10 +250,10 @@ def imprimir_mensaje(linea_actual: int, cantidad_seccion: int,
     # Retornar la línea actual y rango de mensaje actualizados
     return linea_actual, cantidad_seccion, constante_linea, constante_rango, lista_secciones
 
-def mover_cursor(linea_actual: int, cantidad_seccion: int,
-                 lista_secciones: list,
-                 constante_linea, constante_rango):
-    """
+def mover_cursor(linea_actual: int, 
+                 cantidad_seccion: int, lista_secciones: list, 
+                 constante_linea: int, constante_rango: int) -> tuple:
+    """          
     Mueve el cursor de la consola a la posición de la línea deseada y ajusta 
     el rango de impresión de mensajes. También verifica y ajusta las variables
     relacionadas con el control de la impresión en función de la línea y
@@ -295,7 +295,8 @@ def mover_cursor(linea_actual: int, cantidad_seccion: int,
     # Devolver la línea actual y el rango de mensaje actualizados
     return linea_actual, cantidad_seccion, constante_linea, constante_rango, lista_secciones
 
-def restar_linea(linea_actual, cantidad_seccion, constante_rango):
+def restar_linea(linea_actual: int, 
+                 cantidad_seccion: int, constante_rango: int) -> tuple:
     """
     Ajusta la posición de la línea y el rango de sección para el texto. Además,
     maneja las condiciones de retroceso de línea y reinicio de rango.
@@ -319,7 +320,8 @@ def restar_linea(linea_actual, cantidad_seccion, constante_rango):
     # Devuelve la línea actual y el rango de sección actualizados
     return linea_actual, cantidad_seccion, constante_rango
 
-def verificar_linea(linea_actual, constante_linea, constante_rango, lista_secciones):
+def verificar_linea(linea_actual: int, constante_linea: int, 
+                    constante_rango: int, lista_secciones: list) -> tuple:
     """
     Ajusta las constantes de línea y rango a cero, eliminando la primera
     sección de la lista para avanzar en la narrativa.
@@ -342,7 +344,8 @@ def verificar_linea(linea_actual, constante_linea, constante_rango, lista_seccio
     # Devuelve los parámetros actualizados
     return linea_actual, constante_linea, constante_rango, lista_secciones
 
-def rango_seccion(lista_secciones: list, cantidad_seccion: int, linea_actual):
+def rango_seccion(lista_secciones: list, 
+                  cantidad_seccion: int, linea_actual: int) -> tuple:
     """
     Muestra un rango de secciones en la interfaz, ajustando el índice según sea
     necesario.
@@ -370,7 +373,8 @@ def rango_seccion(lista_secciones: list, cantidad_seccion: int, linea_actual):
     # Retorna la cantidad de secciones y la línea actual
     return cantidad_seccion, linea_actual
 
-def imprimir_seccion(lista_secciones: list, seccion: int, i: int):
+def imprimir_seccion(lista_secciones: list, 
+                     seccion: int, i: int) -> tuple:
     """
     Muestra el mensaje de la sección si está activa o deja un espacio en
     blanco si no lo está.
@@ -393,7 +397,7 @@ def imprimir_seccion(lista_secciones: list, seccion: int, i: int):
     # Devolver los valores actualizados
     return seccion, i, lista_secciones
 
-def borrar_pantalla():
+def borrar_pantalla() -> None:
     """
     Borra el contenido de la pantalla desplazando el cursor hacia arriba.
 

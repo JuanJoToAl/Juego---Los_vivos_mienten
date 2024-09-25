@@ -3,7 +3,7 @@ from time import sleep  # Importa la función sleep para pausas en el tiempo
 import os    # Importa el módulo para interactuar con el sistema operativo
 from modulo_impresion import *
 
-def obtener_mensajes_arcos(linea_actual):
+def obtener_mensajes_arcos(linea_actual: int):
     """
 
     Esta función lee los mensajes de diferentes arcos narrativos,
@@ -94,7 +94,9 @@ def obtener_mensajes_arcos(linea_actual):
     
     return paquete_mensajes  # Devuelve la lista de mensajes obtenidos.
 
-def terminar_juego(bandera_arco, contador_arcos, nombres_arcos):
+def terminar_juego(bandera_arco: bool, 
+                   contador_arcos: int, 
+                   nombres_arcos: list) -> tuple:
     """
     Controla el cierre del juego basado en la respuesta del usuario, 
     verificando si el usuario desea finalizar o continuar con el 
@@ -157,9 +159,9 @@ def terminar_juego(bandera_arco, contador_arcos, nombres_arcos):
 
     return bandera_arco, contador_arcos, nombres_arcos  # Devuelve el estado final.
 
-def restaurar_arco(contador_arcos, lista_avance, arco_actual, 
-                   nombres_arcos, bandera_arco):
-    """
+def restaurar_arco(contador_arcos: int, lista_avance: list, 
+                   arco_actual: str, nombres_arcos: list, bandera_arco: bool) -> tuple:
+    """   
     Permite al usuario regresar a un arco  de la historia, actualizando el
     progreso y el estado del arco. También verifica si el arco deseado es
     accesible y maneja el flujo de la narrativa según la decisión del usuario.
@@ -243,7 +245,8 @@ def restaurar_arco(contador_arcos, lista_avance, arco_actual,
 
     return arco_actual, lista_avance, contador_arcos, bandera_arco  # Devuelve el estado final.
 
-def pasar_informacion(paquete_mensajes, linea_actual, cantidad_seccion):
+def pasar_informacion(paquete_mensajes: list, 
+                      linea_actual: int, cantidad_seccion: int) -> None:
     """
     La función recorre cada paquete de mensajes y lo muestra en pantalla.
     También gestiona la impresión de imágenes y alternativas según el contenido
@@ -276,7 +279,7 @@ def pasar_informacion(paquete_mensajes, linea_actual, cantidad_seccion):
         # Imprime el mensaje y actualiza las variables.
         (linea_actual, cantidad_seccion,
          constante_linea, constante_rango, lista_secciones) = imprimir_mensaje(linea_actual, cantidad_seccion, 
-                                                                               lista_secciones,constante_linea, 
+                                                                               lista_secciones, constante_linea, 
                                                                                constante_rango)
 
         linea = 23  # Línea para posicionar el siguiente mensaje.
@@ -301,8 +304,9 @@ def pasar_informacion(paquete_mensajes, linea_actual, cantidad_seccion):
 
     borrar_pantalla()  # Limpia la pantalla al finalizar.
 
-def recorrer_alternativas(alternativas, linea_actual, cantidad_seccion,
-                         constante_linea, constante_rango, lista_secciones):
+def recorrer_alternativas(alternativas: dict, linea_actual: int, 
+                          cantidad_seccion: int, constante_linea: int, 
+                          constante_rango: int, lista_secciones: list) -> tuple:
     """
     Procesa las alternativas seleccionadas por el usuario y muestra
     los mensajes correspondientes. También permite al usuario elegir entre
@@ -341,10 +345,9 @@ def recorrer_alternativas(alternativas, linea_actual, cantidad_seccion,
 
             # Imprime el mensaje y actualiza las variables.
             (linea_actual, cantidad_seccion,
-            constante_linea, constante_rango, lista_secciones) = imprimir_mensaje(
-                linea_actual, cantidad_seccion, lista_secciones,
-                constante_linea, constante_rango
-            )
+            constante_linea, constante_rango, lista_secciones) = imprimir_mensaje(linea_actual, cantidad_seccion, 
+                                                                                  lista_secciones,constante_linea, 
+                                                                                  constante_rango)
 
             del alternativas[opcion]  # Elimina la opción seleccionada.
 
