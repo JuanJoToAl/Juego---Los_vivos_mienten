@@ -21,7 +21,7 @@ def obtener_mensajes_arcos(linea_actual: int):
     paquete_mensajes = []  # Lista para almacenar los mensajes obtenidos.
     
     # Abre el archivo "historia_prueba.json" en modo lectura.
-    with open("historia_prueba.json", "r", encoding="utf-8") as archivo:
+    with open("arcos.json", "r", encoding="utf-8") as archivo:
 
         # Lee el contenido del archivo.
         contenido = archivo.read()
