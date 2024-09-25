@@ -17,27 +17,27 @@
 2. [Funcionamiento](#funcionamiento)
     1. [Estructura general del juego](#estructura-general-del-juego)
         
-        1. [Inicialización de variables para la ventana de juego](#inicialización-de-variables-para-la-ventana-de-juego)
+        1. [Función imprimir_ventana](#función-imprimir_ventana)
         
-        2. [Función imprimir_ventana](#función-imprimir_ventana)
-        
-        3. [Función obtener_mensajes_arcos](#función-obtener_mensajes_arcos)
+        2. [Función obtener_mensajes_arcos](#función-obtener_mensajes_arcos)
 
-           3.1. [Función imprimir_nombre_arco](#función-imprimir_nombre_arco)
+           2.1. [Función imprimir_nombre_arco](#función-imprimir_nombre_arco)
 
-            3.2. [Función pasar_información](#función-pasar_información)
+            2.2. [Función pasar_información](#función-pasar_información)
 
-              3.1.1 [Función borrar_pantalla](#función-borrar_pantalla)
+              2.2.1 [Función borrar_pantalla](#función-borrar_pantalla)
 
-              3.1.2 [Función imprimir_mensaje](#función-imprimir_mensaje)
-              - [Función mover_cursor](#función-mover_cursor)
-                    a.[Función rango_seccion](#función-rango_seccion)
-                    b.[Función verificar_linea](#función-verificar_linea)
-              - [Función restar_linea](#función-restar_linea)
+              2.2.2 [Función imprimir_mensaje](#función-imprimir_mensaje)
+           - [Función mover_cursor](#función-mover_cursor)
 
-              3.1.3 [Función imprimir_imagen](#función-imprimir_imagen)
+             a.[Función rango_seccion](#función-rango_seccion)
 
-              3.1.4 [Función imprimir_alternativas](#función-imprimir_alternativas)
+             b.[Función verificar_linea](#función-verificar_linea)
+           - [Función restar_linea](#función-restar_linea)
+
+           2.2.3 [Función imprimir_imagen](#función-imprimir_imagen)
+
+           2.2.4 [Función imprimir_alternativas](#función-imprimir_alternativas)
 ## Historia
 Nombre: Sombras de una muerte
 
@@ -59,18 +59,6 @@ flowchart TD
     n14 --> n15("fin")
 ```
 
-### Inicialización de variables para la ventana de juego
-Para la impresión de la ventana de juego se establece que:     
-* El ancho de la pantalla es de 80 caracteres.
-* La altura de la ventana de diálogo es de 15 caracteres.
-* La altura de la ventana de interación es de 8 caractres.
-* El ancho máximo del texto impreso en la ventana de diálogo es de 60 caracteres.
-```python
-ancho_pantalla = 80
-altura_dialogo = 15
-altura_interaccion = 8
-ancho_texto = ancho_pantalla - 20
-```
 Además, el archivo JSOn con la histora está organizado de la siguiente manera, cada bloque con sus parámetros:
 ```python
 {
@@ -81,6 +69,25 @@ Además, el archivo JSOn con la histora está organizado de la siguiente manera,
         "id": "mensaje1",
         "texto": "Hora: 5:34 am - 5 de septiembre\n",
         "orientacion": true
+      },
+      {
+        "id": "mensaje2",
+        "texto": "Llego al parque en un taxi\n", 
+        "orientacion": true,
+        "imagen" : "taxi.txt"
+        },
+      {
+        "id": "mensaje3",
+        "texto": "[Taxista] son 15.000 pesos\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje4",
+        "texto": "[Diego Mendoza]: Ya le pago\n",
+        "orientacion": true,
+        "alternativas": {
+          "a": ["Bajarse del taxi\n", "Gracias por el servicio\n"],
+          "b": ["No bajarse del taxi\n", "[Taxista]: Señor, ya hemos llegado\n"]
       }
     ]
    }
@@ -93,40 +100,40 @@ flowchart TD
 ```
 La función imprimir_ventana se encarga de imprimir la ventana de juego con unas dimensiones establecidas.
 ```python
-def imprimir_ventana(ancho_pantalla : int, altura_dialogo : int, 
-                     altura_interaccion: int):
+def imprimir_ventana():
     """
-    Imprime una representación de una ventana de diálogo con una sección de
-    interacción en la consola.
+    Imprime una ventana gráfica de diálogo e interacción en la terminal.
     
-
     Args:
-        ancho_pantalla (int): El ancho de la ventana.
-
-        altura_dialogo (int): La altura de la sección de diálogo de la ventana.
-
-        altura_interaccion (int): La altura de la sección de interacción de la
-        ventana.
-        
+        No recibe argumentos.
+    
     Returns:
-        None
+        int: La altura del área de diálogo de la ventana.
     """
-    # Imprimir la línea superior de la ventana
-    print("-" * (ancho_pantalla + 2))
+    altura_dialogo = 15  # Altura de la sección de diálogo.
+    altura_interaccion = 8  # Altura de la sección de interacción.
     
-    # Imprimir la sección de diálogo de la ventana
+    # Copia la altura de la sección de diálogo.
+    linea_actual = deepcopy(altura_dialogo)
+    
+    # Imprime la línea superior de la ventana.
+    print("-" * 82)
+    
+    # Imprime la sección de diálogo de la ventana.
     for _ in range(altura_dialogo):
-        print("|" + " " * ancho_pantalla + "|")
+        print("|" + " " * 80 + "|")
     
-    # Imprimir la línea divisoria entre la sección de diálogo y la de interacción
-    print("-" * (ancho_pantalla + 2))
+    # Imprime la línea divisoria entre diálogo e interacción.
+    print("-" * 82)
     
-    # Imprimir la sección de interacción de la ventana
+    # Imprime la sección de interacción de la ventana.
     for _ in range(altura_interaccion):
-        print("|" + " " * ancho_pantalla + "|")
+        print("|" + " " * 80 + "|")
     
-    # Imprimir la línea inferior de la ventana
-    print("-" * (ancho_pantalla + 2))
+    # Imprime la línea inferior de la ventana.
+    print("-" * 82)
+    
+    return linea_actual
 ```
 ### Función obtener_mensajes_arcos
 ```mermaid
@@ -415,8 +422,8 @@ flowchart TB
     subgraph s1["imprimir_mensaje"]
         n1("Inicio")
     end
-    n3["¿EL mensaje va alineado a la izquierda o a la derecha?"] -- Derecha --> n4["mover_cursor"]
-    n3 -- Izquierda --> n5["mover_cursor"]
+    n3["¿EL mensaje va alineado a la izquierda o a la derecha?"] -- Derecha --> n4[["mover_cursor"]]
+    n3 -- Izquierda --> n5[["mover_cursor"]]
     n5 --> n6["Se imprime texto con efecto de escritura"]
     s1 --> n3
     n4 --> n9["Se imprime espacios para alinear a la derecha"]
