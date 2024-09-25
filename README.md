@@ -140,17 +140,17 @@ flowchart TD
         n1["Inicio"]
     end
     s1 --> n2["Abrir archivo usando with"]
-    n2 --> n3["¿Hay arcos por recorrer?"]
-    n3 -- Sí --> n4["Imprimir_nombre_arco"]
+    n2 --> n3{"¿Hay arcos por recorrer?"}
+    n3 -- Sí --> n4[["imprimir_nombre_arco"]]
     n3 -- No --> n5["Imprimir_mensaje_final"]
     n5 --> n6["Fin"]
     n4 --> n7["Se obtiene datos de mensajes"]
-    n7 --> n8["pasar_información"]
-    n8 --> n9["¿Se quiere terminar el juego?"]
-    n9 -- No --> n11["¿Se quiere regresar a un arco?"]
+    n7 --> n8[["pasar_información"]]
+    n8 --> n9{"¿Se quiere terminar el juego?"}
+    n9 -- No --> n11{"¿Se quiere regresar a un arco?"}
     n9 -- Sí --> n5
-    n11 -- No --> n4
-    n11 -- Sí --> n3
+    n11 -- No --> n3
+    n11 -- Sí --> n4
     n1:::rounded
     n3:::diam
     n4:::subproc
