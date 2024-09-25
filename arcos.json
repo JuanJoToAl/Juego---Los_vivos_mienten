@@ -437,7 +437,8 @@
       {
         "id": "mensaje2",
         "texto": "A la mañana siguiente, me dirigí a la escena del crimen,\n",
-        "orientacion": true
+        "orientacion": true,
+        "imagen" : "grupo.txt"
       },
       {
         "id": "mensaje3",
@@ -576,7 +577,8 @@
       {
         "id": "mensaje15",
         "texto": "en la cabeza pero abundancia de este en su bigote.\n",
-        "orientacion": true,
+        "orientacion": true,,
+        "imagen" : "persona2.txt",
         "alternativas": {
             "a":["No abrir\n ", "-continúa sonando el timbre \n [Diego]_ Es muy insistente este tipo\n "],
             "b":["Abrir\n", "[Diego]¿Sí? -[Viejo]Buenas tardes señor Diego\n"]
@@ -778,7 +780,8 @@
       {
         "id": "mensaje52",
         "texto": "y comienzo a buscar entre mis archivos,\n",
-        "orientacion": true
+        "orientacion": true,
+        "imagen" : "archivos.txt"
       },
       {
         "id": "mensaje53",
