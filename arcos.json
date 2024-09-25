@@ -88,7 +88,7 @@
         "texto": "en qué problemas estaba metido Parra...\n",
         "orientacion": true,
         "alternativas": {
-          "a": ["¿Cómo murió la víctima?\n", "[Forense]: El cadáver presenta un hematoma en occipucio.\n"],
+          "a": ["¿Cómo murió la víctima?\n", "[Forense]: El cadáver presenta un hematoma en el occipucio.\n"],
           "b": ["¿Desde hace cuánto está aquí el cadáver?\n", "[Forense]: Aproximadamente 5 horas.\n"],
           "c": ["¿Algún sospechoso?\n", "[Forense]: Se siguen entrevistando testigos .\n"],
           "d": ["¿Algún rastro del asesino?\n", "[Forense]: Junto al cuerpo se encontró el teléfono.\n"]
@@ -121,7 +121,7 @@
        "texto": "Quizás no debería ir, ¿realmente debo ir?\n",
        "orientacion": true,
        "alternativas": {
-          "a": ["Pedir un taxi\n", "Después de esperar por unos minutos, por fin ha llegado el taxi\n"],
+          "a": ["Pedir un taxi\n", "Después de esperar por unos minutos, ha llegado el taxi\n"],
           "b": ["No ir\n", "- Continua sonido de celular -, Ah, que fastidio\n"]
       }
       }
@@ -203,8 +203,8 @@
         "texto": "si pudiera rastrear el teléfono, acabaría con él!\n",
         "orientacion": false,
         "alternativas": {
-          "a": ["Tienes que calmarte Pol, ¿qué vas a hacer si encuentras a un psicópata, golpearlo así nada más?\n", "[Pol] Vete al diablo Diego, para tí es fácil decirlo, a tí no te han estado haciendo la misma broma durante meses.\n"],
-          "b": ["Pues adelante, haz lo que quieras, ya tienes edad para decidir si meterte en ese tipo de problemas\n", " - Pol me mira atónito -\t[Pol] Mendoza: No estaba hablando en serio, ¿qué voy a hacer si termina pasando a mayores?\n"],
+          "a": ["Tienes que calmarte Pol, ¿qué vas a hacer si encuentras a un psicópata?\n", "[Pol] Vete al diablo Diego, para tí es fácil decirlo.\n"],
+          "b": ["Pues adelante, haz lo que quieras\n", "[Pol] Mendoza: No estaba hablando en serio\n"],
           "c": ["Dame tu celular, voy a revisarlo\n","[Pol] Toma.\n"],
           "d": ["¿Qué sucedió durante esta última llamada?\n","[Pol] La misma mierda de siempre Diego, solo silencio.\n"]
       }
@@ -212,31 +212,31 @@
       {
         "id": "mensaje14",
         "texto": "Ahora, que tengo el teléfono desbloqueado ,\n",
-        "orientacion": false
+        "orientacion": true
       },
       {
         "id": "mensaje15",
         "texto": "de mi hermano, ¿Qué debería hacer?\n",
         "orientacion": true,
         "alternativas": {
-            "a":["Aprovechar y curiosear el bloc de notas de mi hermano\n","https://official-joke-api.appspot.com/random_joke \t- Si que tienes gustos extraños Pol\n"],
-            "b": ["Revisar el historial de llamadas\n", "Son dos llamadas, ambas de 2 minutos una sucedió a las 1:30 del pasado jueves y la otra a la misma hora el martes siguiente\n"]
+            "a":["Aprovechar y curiosear el bloc de notas de mi hermano\n","Si que tienes gustos extraños Pol no sé porqué vi\n"],
+            "b": ["Revisar el historial de llamadas\n", "Son dos llamadas, ambas de 2 minutos y a la misma hora\n"]
         } 
       },
       {
         "id": "mensaje16",
         "texto": "[Diego] No descubrí nada, le voy a pedir ayuda a un amigo\n",
-        "orientacion": false
+        "orientacion": true
       },
       {
         "id": "mensaje17",
-        "texto": "Le pediré a un amigo que me ayude con esto, seguramente\n",
-        "orientacion": false
+        "texto": "que me ayude con esto, seguramente\n",
+        "orientacion": true
       },
       {
         "id": "mensaje18",
         "texto": "se demore rastreando el teléfono, pero sé que lo \n",
-        "orientacion": false
+        "orientacion": true
       },
       {
         "id": "mensaje19",
@@ -467,16 +467,16 @@
       },
       {
         "id": "mensaje8",
-        "texto": "“Pallida Mors aequo pulsat pede pauperum tabernas”\n",
+        "texto": "“Pallida Mors aequo pulsat pede pauperum tabernas\n",
         "orientacion": true
       },
       {
         "id": "mensaje9",
-        "texto": "regumque turres.\n",
+        "texto": "regumque turres”.\n",
         "orientacion": true,
         "alternativas": {
-            "a":["Preguntar qué significa la frase\n","[Forense]: La traducción es, - La pálida Muerte golpea con pie igual las chozas de los pobres y las torres de los reyes. -\n"],
-            "b":["No preguntar\n", "[Diego] No tengo cabeza para esto\n"]
+            "a":["Preguntar qué significa la frase\n","[Forense]: - La Muerte golpea igual a pobres y a reyes. -\n"],
+            "b":["Quejarse\n", "[Diego] No tengo cabeza para esto\n"]
         }
       },
       {
@@ -484,10 +484,10 @@
         "texto": "Necesito pistas reales, algo que de verdad me sirva\n",
         "orientacion": true,
         "alternativas": {
-            "a":["¿Se encontraron huellas en la carta?\n","[Forense]No, la persona debió usar guantes no porosos para evitar dejar huellas\n"],
-            "b":["¿El culpable dejó pisadas que se puedan rastrear? \n", "[Forense]Si hay pisadas, la persona que cometió el asesinato usaba unos tenis tallas 40, pero no es información que nos diga directamente quien es el culpable\n"],
-            "c":["Deben haber cámaras en la calle, ¿ya las revisaron?\n", "[Forense]ya se hizo una solicitud para revisar las cámaras, solo queda esperar\n"],
-            "d":["En el parque hace unos días sucedió un caso similar, ¿no le parece que están relacionados?\n", "[Forense] Puede que sí, sin embargo, en esta ciudad matan a muchas personas y a veces los patrones se repiten. Se necesita más información para afirmar algo\n"]
+            "a":["¿Se encontraron huellas en la carta?\n","[Forense]: No, la persona debió usar guantes no porosos\n"],
+            "b":["¿El culpable dejó pisadas que se puedan rastrear? \n", "[Forense]: Si hay pisadas, pero nada concluyente.\n"],
+            "c":["Deben haber cámaras en la calle, ¿ya las revisaron?\n", "[Forense]: Ya se solicitó para revisar las cámaras\n"],
+            "d":["Hace unos días sucedió un caso similar, ¿no le parece una relación?\n", "[Forense]: Puede que sí, estos casos son comunes.\n"]
         }
       },
       {
@@ -496,7 +496,7 @@
         "orientacion": true,
         "alternativas": {
             "a":["Irme\n","Mejor me voy, este ambiente me da ganas de vomitar\n"],
-            "b":["Ir al cuarto de mi hermano\n", "abro la puerta y lo primero que veo es la cama destendida y un retrato de los dos cuando éramos niños sobre el nochero- No hay algo que me interese aquí, pero tomaré el retrato\n"]
+            "b":["Ir al cuarto de mi hermano\n", "Abro la puerta y me retracto, mejor me voy.\n"]
         }
       }
     ]
@@ -577,16 +577,21 @@
       {
         "id": "mensaje15",
         "texto": "en la cabeza pero abundancia de este en su bigote.\n",
-        "orientacion": true,,
-        "imagen" : "persona2.txt",
+        "orientacion": true,
+        "imagen" : "persona2.txt"
+      },
+      {
+        "id": "mensaje15",
+        "texto": "[Diego]: ¿Quién es?\n",
+        "orientacion": true,
         "alternativas": {
-            "a":["No abrir\n ", "-continúa sonando el timbre \n [Diego]_ Es muy insistente este tipo\n "],
-            "b":["Abrir\n", "[Diego]¿Sí? -[Viejo]Buenas tardes señor Diego\n"]
+            "a":["No abrir\n", "-continúa sonando el timbre.\n"],
+            "b":["Abrir\n", "[Viejo]: Buenas tardes señor Diego\n"]
         }
       },
       {
         "id": "mensaje16",
-        "texto": "n el momento en el que el anciano dijo mi nombre sentí un\n",
+        "texto": "En el momento en el que el anciano dijo mi nombre sentí un\n",
         "orientacion": true
       },
       {
@@ -596,25 +601,25 @@
       },
       {
         "id": "mensaje18",
-        "texto": "Sus ojos vacíos y tono de voz plano me hacían sentir como",
+        "texto": "Sus ojos vacíos y tono de voz plano me hacían sentir como\n",
         "orientacion": true
       },
       {
         "id": "mensaje19",
-        "texto": "si estuviera delante de un cadáver\\n",
+        "texto": "si estuviera delante de un cadáver.\n",
         "orientacion": true
       },
       {
         "id": "mensaje20",
-        "texto": "[Diego]¿Quién es usted?\n",
+        "texto": "[Diego]: ¿Quién es usted?\n",
         "orientacion": false
       },
       {
         "id": "mensaje21",
-        "texto": "Me llamo Abelardo, pero puede decirme Abel\n",
+        "texto": "[Viejo]: Me llamo Abelardo, pero puede decirme Abel\n",
         "orientacion": true,
         "alternativas": {
-            "a":["¿Qué quiere?\n ", "[Abelardo] Solo quería venir a verlo después de lo de su hermano debe estar devastado ¿no es así?\n "],
+            "a":["¿Qué quiere?\n", "[Abelardo]: Solo quería verlo después de lo de su hermano.\n"],
             "b":["¿Usted tuvo algo que ver con la muerte de mi hermano?\n", "[Abelardo] Por supuesto\n"]
         }
       },
@@ -635,7 +640,7 @@
       },
       {
         "id": "mensaje25",
-        "texto": "[Diego]¿Quién es usted?\n",
+        "texto": "[Diego]: ¿Quién es usted?\n",
         "orientacion": false
       },
       {
@@ -643,9 +648,9 @@
         "texto": "Ya se lo dije, mi nombre es Abel y mi esposa era Natalia.\n",
         "orientacion": false,
         "alternativas": {
-            "a":["Por supuesto, tengo una numerosa cantidad de casos, es mi trabajo limitar a cualquier familiar a un expediente, solo estoy haciendo mi trabajo.\n", "[Abelardo]Oh, ¿y eso es tan muy fácil para usted no es así?\n "],
-            "b":["El trabajo es una de muchas preocupaciones, no me puedo permitir tomar mi trabajo como algo personal, tengo mucho trabajo, muchos casos y digamos que no me sobra el tiempo para perderlo con usted, ¿Nos entendemos?\n", "[Abelardo]Oh, ¿y eso es tan muy fácil para usted no es así?\n"],
-            "c":["Mire, sea lo que sea que le haya pasado a su familiar debe saber que solo hago mi trabajo, yo no mato gente.\n", "[Abelardo]Oh, ¿y eso es tan muy fácil para usted no es así?\n"]
+            "a":["No lo recuerdo, solo estoy haciendo mi trabajo.\n", "[Abelardo]: ¿Eso es tan muy fácil para usted no es así?\n"],
+            "b":["No me tomo mi trabajo como algo personal, ¿nos entendemos?\n", "[Abelardo]: No vine por excusas\n"],
+            "c":["Solo hago mi trabajo, yo no mato gente.\n", "[Abelardo]: Es lo único que dice\n"]
         }
       },
       {
@@ -678,8 +683,8 @@
         "texto": "pero supongo que lo arregló todo con dinero, ¿no es así?\n",
         "orientacion": false,
         "alternativas": {
-            "a":["¿Qué está diciendo, asesinó a mi hermano por algo de lo que no tiene pruebas?\n ", "[Abelardo] Así es señor Diego, no tengo pruebas, pero yo estuve ahí, vi como la atropellaron y la cara de imbécil de ese hombre. Era evidente que estaba borracho y no obtuvo ni un año de cárcel-\n "],
-            "b":["-Esto no está bien, el anciano está loco(cerrar la puerta)-\n", "[Abelardo] Al ver mi intento de cerrar la puerta el hombre asotó la punta de su bastón contra el suelo. El sonido resonó por todo el piso del edificio pero nadie salió, ni siquiera para husmear.\n"]
+            "a":["¿Asesinó a mi hermano por algo de lo que no tiene pruebas?\n", "[Abelardo]: Vi como la atropellaron\n "],
+            "b":["-Esto no está bien, el anciano está loco(cerrar la puerta)-\n", "[Abelardo]:- asota la punta de su bastón contra el suelo.-\n"]
         }
       },
       {
@@ -724,7 +729,7 @@
       },
       {
         "id": "mensaje41",
-        "texto": "en mi mente.Es imperativo que descubra quién es \n",
+        "texto": "en mi mente. Es imperativo que descubra quién es \n",
         "orientacion": true
       },
       {
@@ -739,7 +744,7 @@
       },
       {
         "id": "mensaje44",
-        "texto": "tormenta de pensamientos. Su rostro, surcado por\n ",
+        "texto": "tormenta de pensamientos. Su rostro, surcado por\n",
         "orientacion": true
       },
       {
@@ -764,7 +769,7 @@
       },
       {
         "id": "mensaje49",
-        "texto": "\npoco de alivio, no hay nadie allí, Tengo que",
+        "texto": "poco de alivio, no hay nadie allí, Tengo que\n",
         "orientacion": true
       },
       {
@@ -785,7 +790,7 @@
       },
       {
         "id": "mensaje53",
-        "texto": "revisando cada documento relacionado con el\n ",
+        "texto": "revisando cada documento relacionado con el\n",
         "orientacion": true
       },
       {
@@ -817,7 +822,7 @@
         "id": "mensaje59",
         "texto": "llegar allí, y pronto.\n",
         "orientacion": true
-      }    
+      } 
     ]
   }
 }
