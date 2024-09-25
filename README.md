@@ -1,20 +1,45 @@
-# Proyecto programación
+# Proyecto programación: Sombras de una muerte
+### Equipo y Logo: Pantalla Azul :/
+
+<div align='center'>
+<figure> <img src="https://github.com/J0s3ph2705/Taller-pdc_8/assets/159032718/b0dd65be-48ba-400b-a302-63eb8381cf65" alt="" width="1000" height="auto"/></br>
+</figure>
+
+</div> 
+
+### Integrantes:
+
+1. Joseph Lievano (1052383083)
+2. Juan José Tobar Álvarez (1112042373)
+
 # Índice
 1. [Historia](#historia)
 2. [Funcionamiento](#funcionamiento)
     1. [Estructura general del juego](#estructura-general-del-juego)
+        
         1. [Inicialización de variables para la ventana de juego](#inicialización-de-variables-para-la-ventana-de-juego)
+        
         2. [Función imprimir_ventana](#función-imprimir_ventana)
-        3. [Función dividir_mensaje](#función-dividir_mensaje)
-        4. [Función imprimir_seccion](#función-imprimir_seccion)
-        5. [Función imprimir_mensaje](#función-imprimir_mensaje)
-        6. [Función imprimir_animacion](#función-imprimir_animacion)
-    2. [Estructura mecánicas del juego](#estructura-mecánicas-del-juego)
-        1. [Función taxi](#función-taxi)
-        2. [Función diario](#función-diario)
+        
+        3. [Función obtener_mensajes_arcos](#función-obtener_mensajes_arcos)
 
+           3.1. [Función imprimir_nombre_arco](#función-imprimir_nombre_arco)
+
+            3.2. [Función pasar_información](#función-pasar_información)
+
+              3.1.1 [Función borrar_pantalla](#función-borrar_pantalla)
+
+              3.1.2 [Función imprimir_mensaje](#función-imprimir_mensaje)
+              - [Función mover_cursor](#función-mover_cursor)
+                    a.[Función rango_seccion](#función-rango_seccion)
+                    b.[Función verificar_linea](#función-verificar_linea)
+              - [Función restar_linea](#función-restar_linea)
+
+              3.1.3 [Función imprimir_imagen](#función-imprimir_imagen)
+
+              3.1.4 [Función imprimir_alternativas](#función-imprimir_alternativas)
 ## Historia
-Nombres tentativos: Sin tregua, Sombras de una muerte
+Nombre: Sombras de una muerte
 
 Resumen: El detective Mendoza tiene una vida normal resolviendo crímenes, hasta que sucede la muerte de un ser querido. En principio no significa mucho, un caso más en el historial. Pero esto le termina arrebatando lo que más quiere en el mundo y haciéndole reencontrarse con un viejo conocido.
 
@@ -23,29 +48,15 @@ Versión de python requerida: 3.6 en adelante
 
 Tipo de juego: Novela visual de arte ASCII
 
-La siguiente sección contiene el diagrama de flujo del juego. Se empieza con una estrucutar general y seguida de esta se presentan las explicaciones específicas
-### Estructura general del juego
+La siguiente sección contiene el diagrama de flujo del juego. Se empieza con una estructura general y seguida de esta se presentan las explicaciones específicas.
+## Estructura general del juego
 
 ```mermaid
-flowchart TB
-    A(Inicio) --> B[[Inicialización variables para la impresión de la ventana de juego]]
-    B --> C[["Se imprime la ventana de juego con la función 'imprimir_ventana'"]]
-    C --> D{¿Hay arcos disponibles?}
-    D-- Sí --> F{¿Hay mensajes por imprimir en el arco?}
-        F -- Sí --> G[["Se divide el mensaje con función 'dividir_mensaje'"]]
-            G --> H[["Se imprime el mensaje con función 'imprimir_mensaje'"]]
-            H --> I[[Se establece la alineación del mensaje con función 'imprimir_seccion']]
-            I --> J{¿Hay animaciones por imprimir?}
-            J -- Sí --> K[["Se imprime la animación con función 'imprimir_animación'"]]
-                K --> L{¿Hay opciones de diálogo por imprimir?}
-                L -- Sí --> M[["Se divide el mensaje con función 'dividir_mensaje'"]]
-                    M --> N[["Se imprime el mensaje con función 'imprimir_mensaje'"]]
-                    N --> O[[Se establece la alineación del mensaje con función 'imprimir_seccion']]
-                    O --> F
-                L -- No --> F
-            J -- No --> L
-        F -- No --> D
-    D -- No --> Z(Fin)
+flowchart TD
+    n2("Inicio") --> n12["Se limpia consola con os.system(´cls´)"]
+    n12 --> n13[["Imprimir ventana"]]
+    n13 --> n14["Obtener_mensajes_arcos"]
+    n14 --> n15("fin")
 ```
 
 ### Inicialización de variables para la ventana de juego
@@ -60,7 +71,21 @@ altura_dialogo = 15
 altura_interaccion = 8
 ancho_texto = ancho_pantalla - 20
 ```
-
+Además, el archivo JSOn con la histora está organizado de la siguiente manera, cada bloque con sus parámetros:
+```python
+{
+  "arco1": {
+    "titulo": "El Inicio",
+    "mensajes": [
+      {
+        "id": "mensaje1",
+        "texto": "Hora: 5:34 am - 5 de septiembre\n",
+        "orientacion": true
+      }
+    ]
+   }
+}
+```
 ### Función imprimir_ventana
 ```mermaid
 flowchart TD
@@ -103,128 +128,261 @@ def imprimir_ventana(ancho_pantalla : int, altura_dialogo : int,
     # Imprimir la línea inferior de la ventana
     print("-" * (ancho_pantalla + 2))
 ```
+### Función obtener_mensajes_arcos
+```mermaid
+---
+config:
+  theme: mc
+  look: neo
+---
+flowchart TD
+    subgraph s1["obtener_mensajes_arco"]
+        n1["Inicio"]
+    end
+    s1 --> n2["Abrir archivo usando with"]
+    n2 --> n3["¿Hay arcos por recorrer?"]
+    n3 -- Sí --> n4["Imprimir_nombre_arco"]
+    n3 -- No --> n5["Imprimir_mensaje_final"]
+    n5 --> n6["Fin"]
+    n4 --> n7["Se obtiene datos de mensajes"]
+    n7 --> n8["pasar_información"]
+    n8 --> n9["¿Se quiere terminar el juego?"]
+    n9 -- No --> n11["¿Se quiere regresar a un arco?"]
+    n9 -- Sí --> n5
+    n11 -- No --> n4
+    n11 -- Sí --> n3
+    n1:::rounded
+    n3:::diam
+    n4:::subproc
+    n5:::subproc
+    n6:::rounded
+    n8:::subproc
+    n9:::diam
+    n11:::diam
+    classDef rounded shape: rounded;
+    classDef diam shape: diam;
+    classDef subproc shape: subproc;
+```
+La función obtener_mensajes_arcos se encarga de tomar mensaje por mensaje, teniendo en cuenta en qué arco se esta jugando.
+```python
+def obtener_mensajes_arcos(linea_actual):
+    paquete_mensajes = []
+    # Se abre el archivo "historia.json" en modo lectura con codificación utf-8
+    with open("historia_prueba.json", "r", encoding="utf-8") as archivo:
+        # Se lee el contenido del archivo
+        contenido = archivo.read()
 
-### Función dividir_mensaje
+    # Se carga el contenido JSON en un diccionario de datos
+    datos_lectura = json.loads(contenido)
+
+    contador_arcos = 0
+    nombres_arcos = list(datos_lectura.keys())
+    lista_avance = []
+    arco_actual = nombres_arcos[contador_arcos]
+
+    while contador_arcos < len(nombres_arcos):
+    # for nombre_arco, contenido_arco in datos_lectura.items():
+
+        imprimir_nombre_arco(arco_actual)
+        lista_avance.append(arco_actual)
+
+        contenido_mensajes = datos_lectura[arco_actual].get("mensajes")
+
+        cantidad_seccion = 0
+
+        paquete_mensajes = []
+
+        for mensaje in contenido_mensajes:
+            paquete_mensajes.append(mensaje)
+
+        pasar_informacion(paquete_mensajes, linea_actual, cantidad_seccion)
+
+        contador_arcos += 1
+
+        bandera_arco = True
+
+        (bandera_arco, 
+         contador_arcos, nombres_arcos) = terminar_juego(bandera_arco, contador_arcos, 
+                                                         nombres_arcos)
+
+        while bandera_arco == True:
+            (arco_actual, lista_avance, 
+             contador_arcos, bandera_arco) = restaurar_arco(contador_arcos, lista_avance, 
+                                                            arco_actual, nombres_arcos, 
+                                                            bandera_arco)
+            
+    linea = 22
+    posicionar_linea(linea)
+    for _ in range(2):
+        print("|"+" " * 80)
+
+    linea = 1
+    posicionar_linea(linea)                                                      
+    mensaje_final = ("| Gracias por jugar. ¡Hasta la próxima!\n\n"
+                     "| Créditos:\n| Programado y escrito por:"
+                     " Juan José Tobar y Jospeh Lievano")
+
+    for caracter in mensaje_final:
+        print(caracter, end="", flush=True)
+        sleep(0.03)
+
+    linea = 26
+    posicionar_linea(linea)  
+
+    return None
+```
+### Función imprimir_nombre_arco
 ```mermaid
 flowchart TD
-    A[[dividir_mensaje]]
+    A[[imprimir_nombre_arco]]
 ```
-La función dividir_mensaje se encarga de tomar el mensaje y dividirlo según el ancho de la pantalla. Si no cabe, hace nuevos renglones.
+La función imprimir_nombre_arco se encarga de tomar el nombre del arco e imprimirlo.
 ```python
-def dividir_mensaje(lista_mensajes: list, ancho_pantalla: int,
-                    sublista: int, seccion_escritura: list):
-    """
-    Divide un mensaje en secciones según el ancho de pantalla disponible.
+def imprimir_nombre_arco(nombre_arco):
+    linea = 1
+    posicionar_linea(linea)
 
-    Args:
-        lista_mensajes (list): Lista de listas que contiene mensajes.
+    nombre_arco = nombre_arco[:-1].capitalize() + " " + nombre_arco[-1::]
+    print("| ", end = "")
 
-        ancho_pantalla (int): El ancho de la pantalla para ajustar el texto.
+    for caracter in nombre_arco:
+        print(caracter, end="", flush=True)
+        sleep(0.1)
 
-        sublista (int): Índice de la sublista que contiene el mensaje a dividir.
-
-        seccion_escritura (list): Lista donde se almacenarán las secciones del 
-        mensaje dividido.
-
-    Returns:
-        tuple: Contiene la lista de secciones del mensaje dividido y la lista 
-        de mensajes actualizada.
-    """
-    # Obtener el mensaje de la sublista especificada
-    mensaje = lista_mensajes[sublista][1]
-    
-    # Eliminar el mensaje original de la sublista
-    lista_mensajes[sublista].remove(lista_mensajes[sublista][1])
-    
-    # Inicializar la lista para almacenar las secciones del mensaje
-    seccion_escritura = []
-    
-    # Calcular el ancho máximo del texto permitido en una línea
-    ancho_texto = ancho_pantalla - 20
-    
-    # Inicializar contadores para recorrer el mensaje
-    recorrido = 0
-    contador = 0
-    
-    # Bandera para controlar el bucle de división
-    bandera = True
-
-    # Bucle para dividir el mensaje en secciones según el ancho de texto
-    while recorrido < len(mensaje) and bandera:
-        # Guardar el índice del último espacio antes del límite de ancho
-        if mensaje[contador] == " " and contador < ancho_texto:
-            indice = contador
-        
-        # Si se alcanza el ancho de texto, cortar mensaje y agregar a lista
-        elif ancho_texto <= contador:
-            seccion_escritura.append(mensaje[:indice])
-            mensaje = mensaje[indice:].lstrip()  # Eliminar espacios al inicio
-            recorrido = 0
-            contador = 0
-        
-        # Si el mensaje restante es menor que el ancho de texto, agregar a la
-        # lista
-        
-        elif len(mensaje) < ancho_texto:
-            seccion_escritura.append(mensaje)
-            bandera = False
-        
-        recorrido += 1
-        contador += 1
-
-    # Agregar las secciones del mensaje dividido a la sublista correspondiente
-    lista_mensajes[sublista].append(seccion_escritura)
-
-    # Devolver la lista de secciones y la lista de mensajes actualizada
-    return seccion_escritura, lista_mensajes
+    linea = 23
+    posicionar_linea(linea)
+    input("| Presione enter para continuar:")
 ```
-### Función imprimir_seccion
+### Función pasar_información
+```mermaid
+flowchart TB
+    subgraph s1["pasar_informacion"]
+        n1["Inicio"]
+    end
+    n3{"¿Hay datos de mensajes por obtener?"} -- Sí --> n4["Imprimir_mensaje"]
+    n3 -- No --> n5["borrar_pantalla"]
+    n5 --> n6["Fin"]
+    s1 --> n3
+    n4 --> n9{"¿Hay imágenes por imprimir?"}
+    n9 -- Sí --> n12["imprimir_imagen"]
+    n9 -- No --> n13{"¿Hay alternativas por recorrer?"}
+    n12 --> n13
+    n13 -- No --> n3
+    n13 -- Sí --> n14["recorrer_alternativas"]
+    n14 --> n3
+    classDef rounded shape:rounded;
+    classDef diam shape:diam;
+    classDef subproc shape:subproc;
+    class n1 rounded;
+    class n3 diam;
+    class n4 subproc;
+    class n5 subproc;
+    class n6 rounded;
+    class n9 diam;
+    class n12 subproc;
+    class n13 diam;
+```
+La función pasar_información se encarga de tomar la información en el JSON, por bloques, e imprimir de acuerdo a los criterios que da el bloque.
+```python
+def pasar_informacion(paquete_mensajes, linea_actual, cantidad_seccion):
+    
+    lista_secciones = []
+
+    constante_linea =  1
+    constante_rango = 1
+
+    for paquete in paquete_mensajes:
+
+        orientacion_paquete = []
+
+        mensaje_actual = (paquete.get("texto"))
+
+        orientacion_paquete.append(paquete.get("orientacion"))
+        orientacion_paquete.append(mensaje_actual)
+
+        lista_secciones.append(orientacion_paquete)
+
+        (linea_actual, cantidad_seccion, 
+         constante_linea, constante_rango, lista_secciones) = imprimir_mensaje(linea_actual, 
+                                                              cantidad_seccion, lista_secciones, 
+                                                              constante_linea, constante_rango)
+        
+        linea = 23
+        posicionar_linea(linea)
+
+        input("| Presione enter para continuar:")
+
+        if paquete.get("imagen"):
+            archivo_imagen = paquete.get("imagen")
+            borrar_pantalla( )
+            imprimir_imagen(archivo_imagen )
+
+        if paquete.get("alternativas"):
+            alternativas = paquete.get("alternativas")
+
+            (linea_actual, cantidad_seccion, 
+            constante_linea, constante_rango,  lista_secciones) = recorrer_alternativas(alternativas, linea_actual, 
+                                                                                       cantidad_seccion, constante_linea, constante_rango, lista_secciones)
+
+
+    borrar_pantalla( )
+```
+### Función borrar_pantalla
 ```mermaid
 flowchart TD
-    A[[imprimir_seccion]]
+    A[[borrar_ventana]]
 ```
-La función imprimir sección se encarga de imprimir las secciones del mensaje dividido según una orientación establecida.
+La función borrar_pantalla se encarga de imprimir una nueva linea en blanco, dando el efeco de borrado.
 ```python
-def imprimir_seccion(lista_mensajes: list, contador: int, frase: int, 
-                     seccion: int, i: int):
-    """
-    Imprime una sección de un mensaje basado en el estado actual y parámetros.
+def borrar_pantalla( ):
 
-    Args:
-        lista_mensajes (list): Lista de listas que contiene los mensajes y 
-        su estado de visualización.
+    LINE_UP = '\033[1A'  # Secuencia de escape ANSI para mover el cursor hacia arriba
+    
+    # Mover el cursor hacia arriba 100 líneas
+    for _ in range(100):
+        print(LINE_UP, end="")
 
-        contador (int): Índice del mensaje en la lista que se está procesando.
-        
-        frase (int): Índice de la frase dentro del mensaje actual.
+    print("")  # Imprimir una línea en blanco para separar el contenido
 
-        seccion (int): Índice de la sección actual dentro del mensaje.
-
-        i (int): Línea actual en la pantalla donde se imprimirá el mensaje.
-
-    Returns:
-        tuple: Una tupla que contiene los valores actualizados de frase, 
-               seccion, i, contador y lista_mensajes.
-    """
-    # Imprimir la línea del mensaje según el estado activo
-    if lista_mensajes[contador][0] == True:
-        print("| " + lista_mensajes[contador][1][frase])
-    else:
-        print("| " + " " * 18 + lista_mensajes[contador][1][frase])
-
-    # Actualizar los índices para la próxima sección
-    frase += 1
-    seccion += 1
-    i += 1
-
-    # Devolver los valores actualizados
-    return frase, seccion, i, contador, lista_mensajes
+    # Imprimir líneas vacías para simular el borrado de la pantalla
+    for _ in range(15):
+        print("|" + " " * 80)
 ```
-
 ### Función imprimir_mensaje
 ```mermaid
-flowchart TD
-    A[[imprimir_mensaje]]
+flowchart TB
+    subgraph s1["imprimir_mensaje"]
+        n1["Inicio"]
+    end
+    n3["¿EL mensaje va alineado a la izquierda o a la derecha?"] -- Derecha --> n4["mover_cursor"]
+    n3 -- Izquierda --> n5["mover_cursor"]
+    n5 --> n6["Se imprime texto con efecto de escritura"]
+    s1 --> n3
+    n4 --> n9["Se imprime espacios para alinear a la derecha"]
+    n9 --> n12["<span style='color: rgb(193, 188, 180); --darkreader-inline-color: ﬂ°bdb7ae¶ß' data-darkreader-inline-color=''>Se imprime texto con efecto de escritura</span><br>"]
+    n12 --> n13["restar_linea"]
+    n13 --> n14["mover_cursor"]
+    n6 --> n13
+    n14 --> n15["restar_linea"]
+    n15 --> n16["Fin"]
+    classDef rounded shape: rounded;
+    classDef diam shape: diam;
+    classDef subproc shape: subproc;
+    classDef rect shape: rect;
+    classDef proc shape: proc;
+
+    n1:::rounded
+    n3:::diam
+    n4:::subproc
+    n5:::subproc
+    n6:::rect
+    n9:::rect
+    n12:::proc
+    n13:::subproc
+    n14:::subproc
+    n15:::subproc
+    n16:::rounded
+
 ```
 La función imprimir_mensaje se encarga de imprimir los mensajes ya rebanados en frases y con la ilusión de que se están escribiendo las palabras por teclado.
 El criterio para dividir los mensajes en frases es la longitud de las frases establecida por la variable ancho_texto.
@@ -315,142 +473,177 @@ def imprimir_mensaje(seccion_escritura: list, lista_mensajes: list, linea_actual
     # Retornar la línea actual y rango de mensaje actualizados
     return linea_actual, rango_mensaje
 ```
-
-### Función imprimir_animacion
+### Función mover_cursor
 ```mermaid
+flowchart TB
+    subgraph s1["mover_cursor"]
+        n1["Inicio"]
+    end
+    n3["¿Se llegó al tope superior de la ventana de juego?"] -- Sí --> n4["verificar_linea"]
+    n3 -- No --> n5["Fin"]
+    s1 --> n17["Se posiciona en la línea donde se quiere imprimir"]
+    n17 --> n18["rango_seccion"]
+    n18 --> n3
+    n4 --> n5
 
-flowchart TD
-    A[[imprimir_animacion]]
+    class n1 rounded
+    class n3 diamond
+    class n4 subroutine
+    class n5 rounded
+    class n18 subroutine
 ```
-La función imprimir_animacion se encarga de imprimir las animaciones que acompañan algunos diálogos de los arcos de la historia. Estas se crean utilizando caracteres ASCII.
-
-### Estructura mecánicas del juego
-El siguiente diagrama de flujo muestra la estructura de las funciones del juego como tal.
-
-Primero, se presenta el funcionamiento del inventario:
-```mermaid
-
-flowchart TD
-    n2("Inicio") --> n12[["Mochila"]]
-    n3{"¿Ua opción seleccionada es&nbsp; dinero?"} -- No --> n4{"¿La opción seleccionada es bolígrafo o diario?"}
-    n12 --> n3
-    n3 -- Si --> n8[["taxi"]]
-    n4 -- no --> n13["(Diálogo)- No creo que esto me sirva"]
-    n13 --> n12
-    n4 -- si --> n14[["Escribir"]]
-
-```
-### Función mochila
-```mermaid
-flowchart TD
-    A[[mochila]]
-```
-La función mochila se encarga de presentar al jugador su inventario, el cual es una lista. AL mostrarse al jugador, se le da la opción de escoger qué ítem usar.
+La función mover_cursor se encarga de mover el cursor a la línea donde se va imprimiendo el mensaje, teniendo también en cuenta cuántas líneas caben en la pantalla de juego.
 ```python
-#Mochila
-#Con las otras funciones importadas, es simplemente dar las opciones y ejecutar la función que corresponde a la elección
-mochila=[dinero,diario,bolígrafo,cartera,lupa]
-def mochila (x:bool)->list:
-    while x==True:
-        print(mochila)
-        opciones=input("¿Qué quieres usar?\n\t(1).Dinero\n\t(2).Diario\n\t(3).Bolígrafo\n\t(4).Cartera\n\t(5)Lupa")
-        if opciones=="1":
-            x=dinero
-            dinero=taxi(x)
-        elif opciones=="2":
-            x=True
-            escribir(x)
-        elif opciones=="3":
-            papelescribir=True
-            while papelescribir==True:
-                papelescribir=input("¿En dónde quieres escribir?\n\t(1).Diario\n\t(2).Cartas")
-                if papelesescribir=="1":
-                    bolígrafo=True
-                    escribir(bolígrafo)
-                elif papelesescribir=="2":
-                    print("´No puedo comprometer las purebas´")
-                else:
-                    print("Por favor escoger una opción ")
-                    papelesescribir=True
-        elif opciones=="4":
-            x=True
-            cartera(x)
-        elif opciones=="5":
-            x=True
-            lupa(x)
-```
-### Función taxi
-```mermaid
-flowchart TD
-    A[[taxi]]
-```
-La función taxi se encarga de tomar el entero que representa el dinero del jugador, y le resta el valor de la carrera de taxi.
-```python
-#Función cuando se usa dinero en el taxi
-def taxi (x:int)->int:
-   x-=15000
-   return x
-```
-### Función escribir
-```mermaid
-flowchart TD
-    A[[escribir]]
-```
-Es una función que se encarga de modificar el diario, que es una lista la cual guarda el texto que el jugador quiera, estas notas se pueden editar, borra o se pueden escribir unas nuevas.
-```python
-# 2. Diario y bolígrafo
-bolígrafo=False
-diario=[]
-def escribir (x:str)->list:
-#Se determina si el diario está en blanco, si está en blanco, solo da la opción de escribir o no escribir
-    if len(diario)==0:
-        print("El diario está en blanco)")
-        while x==True:
-            x=elección=input("\t(1).Escribir algo nuevo \n\t(2).No escribir nada\n\t")
-            if elección=="1":
-                diario.append(input("Escriba el texto que quiere añadir "))
-            elif elección=="2":
-                print("Continuando")
-#Si el jugador escribe otor elemento, el programa piede al jugador escoger entre las dos opciones
-            else:
-                print("por favor, escoja alguna de las opciones")
-                x=True
-#Si no está en blanco, se imprime la lista y el jugador escoge si añade, elimina o edita notas, en el caso de editar, quita el elemento que se deasea y se inserta uno nuevo
-    else:
-        print(diario)
-        while x==True:
-            x=elección=input("\t(1). Escribir algo nuevo\n\t(2).Borrar un elemento \n\t(3).Editar un elemento \n\t")
-        if elección=="1":
-            diario.append(input("Escriba el texto que quiere añadir "))
-        elif elección=="2":
-            eliminar=int(input("Escriba el número de la nota que desea eliminar "))
-            eliminar-=1
-            diario.pop(eliminar)
-#Para editar, se elimina el elemento de la lista y se añade la nueva nota en el mismo lugar
-        elif elección=="3":
-            modificar=int(input("Escriba el número de la nota que desea editar "))
-            modificar-=1
-            diario.pop(modificar)
-            diario.insert(modificar,input("Escriba la nueva nota "))
-#Si el jugador escribe otor elemento, el programa piede al jugador escoger entre las dos opciones
+def mover_cursor(linea_actual: int, cantidad_seccion: int, 
+                 lista_secciones: list, 
+                constante_linea, constante_rango):
+
+    LINE_UP = '\033[1A'  # Secuencia de escape ANSI para mover el cursor arriba
+    
+    # Mover el cursor hacia arriba 100 líneas
+    for _ in range(100):
+        print(LINE_UP, end="")
+
+    # Imprimir líneas vacías hasta alcanzar la línea actual
+    for _ in range(linea_actual):
+
+        # Si es la última línea y no es la 14, ajustar el rango del mensaje
+        if _ == linea_actual - 1 and _ != 14:
+            print("")
+            cantidad_seccion, linea_actual = rango_seccion(lista_secciones, cantidad_seccion, linea_actual)
+        
+
         else:
-            print("Por favor, escoja alguna de las opciones")
-            x=True
-#Para ejecutar el diario
-if __name__ == "__main__":
-  x=True
-  escribir(x)
-#Si se ejecuta por el bolígrafo, se pondría esto
-  if __name__ == "__main__":
-    papelescribir=True
-    while papelescribir==True:
-#EL jugador escoge dónde escribir, se escoge el diario, se corre la función "escribir", si se escoge las cartas, no se permite porque son pruebas, si escribe otra cosa, el programa pide escoger una opción
-        papelescribir=input("¿En dónde quieres escribir?\n\t(1).Diario\n\t(2).Cartas")
-        if papelesescribir=="1":
-            bolígrafo=True
-            escribir(bolígrafo)
-        elif papelesescribir=="2":
-            print("´No puedo comprometer las pruebas´")
-        else:
-            print("Por favor escoger una opción ")
-            papelesescribir=True
+            print("")  # Imprimir línea vacía
+    
+    if _ == 0 and linea_actual == 1:
+
+        (linea_actual, constante_linea, 
+         constante_rango, lista_secciones) = verificar_linea(linea_actual, constante_linea, 
+                                                             constante_rango, lista_secciones)
+
+                                        
+
+    # Devolver la línea actual y el rango de mensaje actualizados
+    return linea_actual, cantidad_seccion, constante_linea, constante_rango, lista_secciones
+
+def restar_linea(linea_actual, cantidad_seccion, constante_rango):
+
+    if linea_actual != 1 and cantidad_seccion != 10:
+        linea_actual -= 1
+
+    elif linea_actual == 1 and cantidad_seccion == 7:
+        linea_actual = 2
+        constante_rango = 0
+
+
+    return linea_actual, cantidad_seccion, constante_rango
+```
+### Función rango_seccion
+```mermaid
+flowchart TD
+    A[[rango_seccion]]
+```
+La función rango_seccion se encarga de poner el mensaje dentro del rango que se puede en la pantalla de juego.
+```python
+def rango_seccion(lista_secciones: list, cantidad_seccion: int, linea_actual):
+
+    i = 0         # Inicializa el índice de la línea actual
+    seccion = 0   # Inicializa el índice de la sección actual
+
+    # Bucle para ajustar el rango de la sección a mostrar
+    while i < cantidad_seccion :
+        
+
+        # Llama a imprimir_seccion para mostrar la sección actual
+        seccion, i, lista_secciones = imprimir_seccion(lista_secciones, seccion, i)
+
+            # Actualizar los índices para la próxima sección
+        seccion += 1
+        i += 1
+    return cantidad_seccion, linea_actual  # Retorna el rango de mensaje ajustado
+```
+### Función verificar_linea
+```mermaid
+flowchart TD
+    A[[verificar_linea]]
+```
+La función verificar_linea se encarga de hacer que la linea quede en su lugar sin mover otros elementos.
+```python
+def verificar_linea(linea_actual, constante_linea, constante_rango, lista_secciones):
+
+    constante_linea = 0
+    constante_rango = 0
+
+    lista_secciones.pop(0)
+    
+    return linea_actual, constante_linea, constante_rango, lista_secciones
+```
+### Función restar_linea
+```mermaid
+flowchart TD
+    A[[restar_linea]]
+```
+La función restar_linea se encarga de quitar las líneas que van saliendo de la pantalla de juego.
+```python
+def restar_linea(linea_actual, cantidad_seccion, constante_rango):
+
+    if linea_actual != 1 and cantidad_seccion != 10:
+        linea_actual -= 1
+
+    elif linea_actual == 1 and cantidad_seccion == 7:
+        linea_actual = 2
+        constante_rango = 0
+
+```
+### Función imprimir_imagen
+```mermaid
+flowchart TD
+    A[[imprimir_imagen]]
+```
+La función imprimir_imagen se encarga de imprimir las imágenes ASCII.
+```python
+def imprimir_imagen(archivo_imagen):
+    
+    linea = 1
+    posicionar_linea(linea)
+
+    with open(archivo_imagen, 'r') as archivo:
+        arte_ascii = archivo.read()
+
+    for caracter in arte_ascii:
+        print(caracter, end="", flush=True)
+        sleep(0.005)
+    
+    linea = 23
+    posicionar_linea(linea)
+
+    input("| Presione enter para continuar:")
+```
+### Función imprimir_alternativas
+```mermaid
+flowchart TD
+    A[[imprimir_alternativas]]
+```
+La función imprimir_alternativas se encarga de imprimir las opciones del jugador, luego imprime la respuesta a esa elección.
+```python
+def imprimir_alternativas(alternativas):
+    
+    LINE_UP = '\033[1A'
+    for clave, valor in alternativas.items():
+        posibilidad = "| " + clave + ") " + valor[0]
+
+        for caracter in posibilidad:
+            print(caracter, end="", flush=True)
+            sleep(0.02)
+
+    linea = 22
+    posicionar_linea(linea)
+    for _ in range(2):
+        print("|" + " " * 70)
+
+    print(LINE_UP, end="")
+    opcion = input("| Seleccione una opción:").lower().replace(" ", "")
+
+    return opcion, alternativas
+```
