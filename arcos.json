@@ -271,7 +271,7 @@
         "orientacion": false,
         "alternativas": {
             "a":["Mirar el reloj\n","[Diego]: Son las 4:30 de la mañana\n"]
-            "b": ["Contestar\n". "Es Andrés\n"]
+            "b": ["Contestar\n","Es Andrés\n"]
         }
       },
       {
