@@ -1,0 +1,249 @@
+{
+  "arco1": {
+    "titulo": "El Inicio",
+    "mensajes": [
+      {
+        "id": "mensaje1",
+        "texto": "Hora: 5:34 am - 5 de septiembre\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje2",
+        "texto": "Llego al parque en un taxi\n", 
+        "orientacion": true,
+        "imagen" : "taxi.txt"
+      },
+      {
+        "id": "mensaje3",
+        "texto": "[Taxista] son 15.000 pesos\n",
+        "orientacion": false,
+        "imagen" : "dormir.txt"
+      },
+      {
+        "id": "mensaje4",
+        "texto": "[Diego Mendoza]: Ya le pago\n",
+        "orientacion": true,
+        "alternativas": {
+          "a": ["¿Cómo murió la víctima?\n", "[Forense]: El cadáver presenta un hematoma en occipucio.\n"],
+          "b": ["¿Desde hace cuánto está aquí el cadáver?\n", "[Forense]: Aproximadamente 5 horas.\n"],
+          "c": ["¿Algún sospechoso?\n", "[Forense]: Se siguen entrevistando testigos .\n"],
+          "d": ["¿Algún rastro del asesino?\n", "[Forense]: Junto al cuerpo se encontró el teléfono.\n"]
+        }
+      },
+      {
+        "id": "mensaje5",
+        "texto": "[Diego Mendoza]: Me bajo del taxi y me acerco a la escena\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje6",
+        "texto": "del crimen, el cuerpo se había cubierto con una manta. Al\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje7",
+        "texto": "ver la ficha de la víctima me asalta un pensamiento, lo\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje8",
+        "texto": "conozco, es mi amigo de la academia, es cierto que no\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje9",
+        "texto": "pasamos mucho tiempo juntos, pero me da escalofríos saber\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje10",
+        "texto": "cómo terminó así. Uno de los forenses me muestra la imagen\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje11",
+        "texto": "de una carta abierta, la cual se sospecha que dejó el\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje12",
+        "texto": "asesino.\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje6",
+        "texto": "otra prueba\n",
+        "orientacion": true,
+        "opciones": {
+            "id": "opcion2",
+            "ciclo": true,
+            "tipo": "reduccion",
+            "alternativas": [
+              {
+                "a) ¿Cómo murió la víctima?": "[Forense]: El cadáver presenta un hematoma grave en la parte trasera del cráneo producto de la caída post mortem. Se presume que la causa de muerte fueron dos impactos de bala entre la segunda y tercera costilla y uno en la sien.",
+                "b) ¿Desde hace cuánto está aquí el cadáver?": "[Forense]: Aproximadamente 5 horas.",
+                "c) ¿Algún sospechoso?": "[Forense]: Se siguen entrevistando testigos pero nada concluyente hasta el momento.",
+                "d) ¿Algún rastro del asesino?": "[Forense]: Junto al cuerpo se encontró el teléfono de la víctima con varias llamadas perdidas de un número no registrado y un ligero camino de huellas ensangrentadas pertenecientes a la víctima.",
+                "e) ¿Había testigos?": "Un habitante de calle y el celador que descubrió el cuerpo cuando iba a su turno de trabajo. Pero hasta el momento no han proporcionado información concluyente."
+              }
+            ]
+          }
+      },
+      {
+        "id": "mensaje6",
+        "texto": "- Suena mi celular -\n",
+        "orientacion": true
+
+      },
+      {
+        "id": "mensaje7",
+        "texto": "- Es mi hermano Marco, se escucha agitado. -\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje8",
+        "texto": "[Marco]: necesito que vengas a mi casa lo más pronto \n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje9",
+        "texto": "- Doy un suspiro de fastidio y llamo un taxi, quizás  -\n",
+        "orientacion": true
+      },
+      {
+       "id": "mensaje10", 
+       "texto": "Quizás no debería ir, ¿realmente debo ir?\n",
+       "orientacion": true
+      },
+      {
+        "id": "mensaje11", 
+        "texto": "[Diego Mendoza]: Llegó el taxi\n",
+        "orientacion": true
+      }
+    ]
+  },
+  "arco2" :{
+    "titulo": "El Inicio",
+    "mensajes": [
+      {
+        "id": "mensaje1",
+        "texto": "Hora: 5:34 am - 5 de septiembre\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje2",
+        "texto": "Llego al parque en un taxi\n", 
+        "orientacion": true,
+        "imagen" : "taxi.txt"
+      },
+      {
+        "id": "mensaje3",
+        "texto": "[Taxista] son 15.000 pesos\n",
+        "orientacion": false,
+        "imagen" : "dormir.txt"
+      },
+      {
+        "id": "mensaje4",
+        "texto": "[Diego Mendoza]: Ya le pago\n",
+        "orientacion": true,
+        "alternativas": {
+          "a": ["¿Cómo murió la víctima?\n", "[Forense]: El cadáver presenta un hematoma en occipucio.\n"],
+          "b": ["¿Desde hace cuánto está aquí el cadáver?\n", "[Forense]: Aproximadamente 5 horas.\n"],
+          "c": ["¿Algún sospechoso?\n", "[Forense]: Se siguen entrevistando testigos .\n"],
+          "d": ["¿Algún rastro del asesino?\n", "[Forense]: Junto al cuerpo se encontró el teléfono.\n"]
+        }
+      },
+      {
+        "id": "mensaje5",
+        "texto": "[Diego Mendoza]: Me bajo del taxi y me acerco a la escena\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje6",
+        "texto": "del crimen, el cuerpo se había cubierto con una manta. Al\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje7",
+        "texto": "ver la ficha de la víctima me asalta un pensamiento, lo\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje8",
+        "texto": "conozco, es mi amigo de la academia, es cierto que no\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje9",
+        "texto": "pasamos mucho tiempo juntos, pero me da escalofríos saber\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje10",
+        "texto": "cómo terminó así. Uno de los forenses me muestra la imagen\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje11",
+        "texto": "de una carta abierta, la cual se sospecha que dejó el\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje12",
+        "texto": "asesino.\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje6",
+        "texto": "otra prueba\n",
+        "orientacion": true,
+        "opciones": {
+            "id": "opcion2",
+            "ciclo": true,
+            "tipo": "reduccion",
+            "alternativas": [
+              {
+                "a) ¿Cómo murió la víctima?": "[Forense]: El cadáver presenta un hematoma grave en la parte trasera del cráneo producto de la caída post mortem. Se presume que la causa de muerte fueron dos impactos de bala entre la segunda y tercera costilla y uno en la sien.",
+                "b) ¿Desde hace cuánto está aquí el cadáver?": "[Forense]: Aproximadamente 5 horas.",
+                "c) ¿Algún sospechoso?": "[Forense]: Se siguen entrevistando testigos pero nada concluyente hasta el momento.",
+                "d) ¿Algún rastro del asesino?": "[Forense]: Junto al cuerpo se encontró el teléfono de la víctima con varias llamadas perdidas de un número no registrado y un ligero camino de huellas ensangrentadas pertenecientes a la víctima.",
+                "e) ¿Había testigos?": "Un habitante de calle y el celador que descubrió el cuerpo cuando iba a su turno de trabajo. Pero hasta el momento no han proporcionado información concluyente."
+              }
+            ]
+          }
+      },
+      {
+        "id": "mensaje6",
+        "texto": "- Suena mi celular -\n",
+        "orientacion": true
+
+      },
+      {
+        "id": "mensaje7",
+        "texto": "- Es mi hermano Marco, se escucha agitado. -\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje8",
+        "texto": "[Marco]: necesito que vengas a mi casa lo más pronto \n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje9",
+        "texto": "- Doy un suspiro de fastidio y llamo un taxi, quizás  -\n",
+        "orientacion": true
+      },
+      {
+       "id": "mensaje10", 
+       "texto": "Quizás no debería ir, ¿realmente debo ir?\n",
+       "orientacion": true
+      },
+      {
+        "id": "mensaje11", 
+        "texto": "[Diego Mendoza]: Llegó el taxi\n",
+        "orientacion": true
+      }
+    ]
+  }
+}
+

@@ -1,0 +1,823 @@
+{
+  "arco1": {
+    "titulo": "El Inicio",
+    "mensajes": [
+      {
+        "id": "mensaje1",
+        "texto": "Hora: 5:34 am - 5 de septiembre\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje2",
+        "texto": "Llego al parque en un taxi\n", 
+        "orientacion": true,
+        "imagen" : "taxi.txt"
+        },
+      {
+        "id": "mensaje3",
+        "texto": "[Taxista] son 15.000 pesos\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje4",
+        "texto": "[Diego Mendoza]: Ya le pago\n",
+        "orientacion": true,
+        "alternativas": {
+          "a": ["Bajarse del taxi\n", "Gracias por el servicio\n"],
+          "b": ["No bajarse del taxi\n", "[Taxista]: Señor, ya hemos llegado\n"]
+      }
+        
+      },
+      {
+        "id": "mensaje5",
+        "texto": "[Diego Mendoza]: Me bajo del taxi y me acerco a la escena\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje6",
+        "texto": "del crimen, el cuerpo se había cubierto con una manta. Al\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje7",
+        "texto": "ver la ficha de la víctima me asalta un pensamiento, lo\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje8",
+        "texto": "conozco, es mi amigo de la academia, es cierto que no\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje9",
+        "texto": "pasamos mucho tiempo juntos, pero me da escalofríos saber\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje10",
+        "texto": "cómo terminó así. Uno de los forenses me muestra la imagen\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje11",
+        "texto": "de una carta abierta, la cual se sospecha que dejó el\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje12",
+        "texto": "asesino.\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje13",
+        "texto": "La carta decía: ´Los vivos mienten´.\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje14",
+        "texto": "Me parece una cosa sin sentido,\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje15",
+        "texto": " pero me intriga saber \n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje16",
+        "texto": "en qué problemas estaba metido Parra...\n",
+        "orientacion": true,
+        "alternativas": {
+          "a": ["¿Cómo murió la víctima?\n", "[Forense]: El cadáver presenta un hematoma en occipucio.\n"],
+          "b": ["¿Desde hace cuánto está aquí el cadáver?\n", "[Forense]: Aproximadamente 5 horas.\n"],
+          "c": ["¿Algún sospechoso?\n", "[Forense]: Se siguen entrevistando testigos .\n"],
+          "d": ["¿Algún rastro del asesino?\n", "[Forense]: Junto al cuerpo se encontró el teléfono.\n"]
+        }
+      },
+      {
+        "id": "mensaje17",
+        "texto": "- Suena mi celular -\n",
+        "orientacion": true,
+        "imagen": "celular.txt"
+
+      },
+      {
+        "id": "mensaje18",
+        "texto": "- Es mi hermano Marco, se escucha agitado. -\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje19",
+        "texto": "[Marco]: necesito que vengas a mi casa lo más pronto posible\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje20",
+        "texto": "- Doy un suspiro de fastidio y llamo un taxi, quizás  -\n",
+        "orientacion": true
+      },
+      {
+       "id": "mensaje21", 
+       "texto": "Quizás no debería ir, ¿realmente debo ir?\n",
+       "orientacion": true,
+       "alternativas": {
+          "a": ["Pedir un taxi\n", "Después de esperar por unos minutos, por fin ha llegado el taxi\n"],
+          "b": ["No ir\n", "- Continua sonido de celular -, Ah, que fastidio\n"]
+      }
+      }
+    ]
+  },
+  "arco2": {
+    "titulo": "Algo anda mal",
+    "mensajes": [
+      {
+        "id": "mensaje1",
+        "texto": "Hora: 6:57 am - 5 de septiembre\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje2",
+        "texto": "Mi hermano había estado recibiendo llamadas\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje3",
+        "texto": "extrañas desde hace varios meses.\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje4",
+        "texto": "Cuando contestaba al teléfono no se escuchaba nada, \n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje5",
+        "texto": "solo un silencio absoluto e inquietante. \n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje6",
+        "texto": "Lo denunciamos a la policía pero las llamadas \n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje7",
+        "texto": "continuaron, por lo que al final cambió de teléfono.\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje8",
+        "texto": "Por fin, llegué a la casa de mi hermano\n",
+        "orientacion": true,
+        "alternativas": {
+          "a": ["Bajarse del taxi\n", "Pago y me dirijo a tocar la puerta\n"],
+          "b": ["No bajarse del taxi\n", "[Taxista]: Señor, ya hemos llegado\n"]
+      }
+      },
+      {
+        "id": "mensaje9",
+        "texto": "Me acerco a la puerta de la casa\n",
+        "orientacion": true,
+        "alternativas": {
+          "a": ["Tocar la puerta\n", "Toc-toc-toc\n"]
+        }
+      },
+      {
+        "id": "mensaje10",
+        "texto": "Mi hermano abre, se escucha molesto\n",
+        "orientacion": true,
+        "imagen" : "persona.txt"
+      },
+      {
+        "id": "mensaje11",
+        "texto": "[Pol Mendoza]: ¡Este malnacido no deja de llamarme, Diego.\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje12",
+        "texto": " Te juro que me tiene harto,\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje13",
+        "texto": "si pudiera rastrear el teléfono, acabaría con él!\n",
+        "orientacion": false,
+        "alternativas": {
+          "a": ["Tienes que calmarte Pol, ¿qué vas a hacer si encuentras a un psicópata, golpearlo así nada más?\n", "[Pol] Vete al diablo Diego, para tí es fácil decirlo, a tí no te han estado haciendo la misma broma durante meses.\n"],
+          "b": ["Pues adelante, haz lo que quieras, ya tienes edad para decidir si meterte en ese tipo de problemas\n", " - Pol me mira atónito -\t[Pol] Mendoza: No estaba hablando en serio, ¿qué voy a hacer si termina pasando a mayores?\n"],
+          "c": ["Dame tu celular, voy a revisarlo\n","[Pol] Toma.\n"],
+          "d": ["¿Qué sucedió durante esta última llamada?\n","[Pol] La misma mierda de siempre Diego, solo silencio.\n"]
+      }
+      },
+      {
+        "id": "mensaje14",
+        "texto": "Ahora, que tengo el teléfono desbloqueado ,\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje15",
+        "texto": "de mi hermano, ¿Qué debería hacer?\n",
+        "orientacion": true,
+        "alternativas": {
+            "a":["Aprovechar y curiosear el bloc de notas de mi hermano\n","https://official-joke-api.appspot.com/random_joke \t- Si que tienes gustos extraños Pol\n"],
+            "b": ["Revisar el historial de llamadas\n", "Son dos llamadas, ambas de 2 minutos una sucedió a las 1:30 del pasado jueves y la otra a la misma hora el martes siguiente\n"]
+        } 
+      },
+      {
+        "id": "mensaje16",
+        "texto": "[Diego] No descubrí nada, le voy a pedir ayuda a un amigo\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje17",
+        "texto": "Le pediré a un amigo que me ayude con esto, seguramente\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje18",
+        "texto": "se demore rastreando el teléfono, pero sé que lo \n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje19",
+        "texto": "conseguirá. \n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje20",
+        "texto": "[Pol]: gracias Diego, ojalá sea rápido\n",
+        "orientacion": false
+      }
+      
+    ]
+  },
+  "arco3": {
+    "titulo": "Remordimiento",
+    "mensajes": [
+      {
+        "id": "mensaje1",
+        "texto": "Hora: 4:28 am - 6 de septiembre\n",
+        "orientacion": true,
+        "imagen" : "dormir.txt"
+      },
+      {
+        "id": "mensaje2",
+        "texto": "-Sonido de llamada de celular -\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje3",
+        "texto": "[Diego]¡Ah!, ¿quién llama a esta hora?\n",
+        "orientacion": false,
+        "alternativas": {
+            "a":["Mirar el reloj\n","[Diego]: Son las 4:30 de la mañana\n"],
+            "b": ["Contestar\n","Es Andrés\n"]
+        }
+      },
+      {
+        "id": "mensaje4",
+        "texto": "[Andrés]: ¿Diego me oyes?\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje5",
+        "texto": "[Diego]: Sí, ¿qué quieres?\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje6",
+        "texto": "[Andrés]: Diego, pasó algo.\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje7",
+        "texto": "Pero necesito que estés tranquilo.\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje8",
+        "texto": "Sentí como un agujero se me hacía en el estómago\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje9",
+        "texto": "¡¿Qué... qué pasó, me estás asustando?!\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje10",
+        "texto": "[Andrés]: Diego, sé que es difícil pero tengo decírtelo,\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje11",
+        "texto": "mataron a tu hermano. Pronto te pedirán que testifiques\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje12",
+        "texto": " para saber más sobre lo que pudo suceder\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje13",
+        "texto": " La verdad no escuché lo que decía Andrés, desde esa\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje14",
+        "texto": "primera frase mi mente se perdió en el recuerdo de la\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje15",
+        "texto": "última vez que estuve en su casa. Recordé su rostro\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje16",
+        "texto": "enfurecido por lo de las llamadas y cómo le prometí\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje17",
+        "texto": "as llamadas y cómo le prometí que lo ayudaría.\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje18",
+        "texto": "[Andrés]: ¿Diego, Diego me oyes?\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje19",
+        "texto": "[Diego]: Sí, sí te oigo.\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje20",
+        "texto": "[Andrés]: ¿Necesitas algo?\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje21",
+        "texto": "[Diego]: No, tranquilo, estaré bien.\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje22",
+        "texto": "[Andrés]: ¿Seguro?\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje23",
+        "texto": "[Diego]: Sí…\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje24",
+        "texto": "[Andrés]: Está bien, llámame si necesitas algo.\n",
+        "orientacion": false
+      }, 
+      {
+        "id": "mensaje25",
+        "texto": "Cuelgo el telefono y lo pongo en mi mesa de noche\n",
+        "orientacion": true
+      }, 
+      {
+        "id": "mensaje26",
+        "texto": "[Diego]: Mierda, dentro de unas horas las cosas se van a\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje27",
+        "texto": "complicar.\n",
+        "orientacion": false
+      }, 
+      {
+        "id": "mensaje28",
+        "texto": "…no puede ser, estoy hablando de la muerte de mi hermano.\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje29",
+        "texto": "Supongo que tenía razón cuando me dijo que el trabajo me\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje30",
+        "texto": "volvería insensible. Las lágrimas rodaron por mis mejillas\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje31",
+        "texto": "y empezaron a perseguirme los recuerdos.Yo hice lo que pude\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje32",
+        "texto": "para quedarme dormido, pero solo escapé de ellos cuando el\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje32",
+        "texto": "cansancio se apiadó de mí.\n",
+        "orientacion": true
+      }  
+    ]
+  },
+  "arco4": {
+    "titulo": "Recuerdos",
+    "mensajes": [
+      {
+        "id": "mensaje1",
+        "texto": "Hora: 8:48 am - 6 de septiembre\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje2",
+        "texto": "A la mañana siguiente, me dirigí a la escena del crimen,\n",
+        "orientacion": true,
+        "imagen" : "grupo.txt"
+      },
+      {
+        "id": "mensaje3",
+        "texto": "la casa de mi hermano. Su cuerpo yacía en el suelo y el\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje4",
+        "texto": "forense me explicó que presentaba un disparo de bala en \n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje5",
+        "texto": "la región torácica. Además, me comentó que se había \n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje6",
+        "texto": "encontrado una carta al lado del cuerpo y me mostró una \n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje7",
+        "texto": "imagen del mensaje que llevaba dentro.\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje8",
+        "texto": "“Pallida Mors aequo pulsat pede pauperum tabernas”\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje9",
+        "texto": "regumque turres.\n",
+        "orientacion": true,
+        "alternativas": {
+            "a":["Preguntar qué significa la frase\n","[Forense]: La traducción es, - La pálida Muerte golpea con pie igual las chozas de los pobres y las torres de los reyes. -\n"],
+            "b":["No preguntar\n", "[Diego] No tengo cabeza para esto\n"]
+        }
+      },
+      {
+        "id": "mensaje10",
+        "texto": "Necesito pistas reales, algo que de verdad me sirva\n",
+        "orientacion": true,
+        "alternativas": {
+            "a":["¿Se encontraron huellas en la carta?\n","[Forense]No, la persona debió usar guantes no porosos para evitar dejar huellas\n"],
+            "b":["¿El culpable dejó pisadas que se puedan rastrear? \n", "[Forense]Si hay pisadas, la persona que cometió el asesinato usaba unos tenis tallas 40, pero no es información que nos diga directamente quien es el culpable\n"],
+            "c":["Deben haber cámaras en la calle, ¿ya las revisaron?\n", "[Forense]ya se hizo una solicitud para revisar las cámaras, solo queda esperar\n"],
+            "d":["En el parque hace unos días sucedió un caso similar, ¿no le parece que están relacionados?\n", "[Forense] Puede que sí, sin embargo, en esta ciudad matan a muchas personas y a veces los patrones se repiten. Se necesita más información para afirmar algo\n"]
+        }
+      },
+      {
+        "id": "mensaje11",
+        "texto": "Supongo que puedo mirar la casa antes de irme:\n",
+        "orientacion": true,
+        "alternativas": {
+            "a":["Irme\n","Mejor me voy, este ambiente me da ganas de vomitar\n"],
+            "b":["Ir al cuarto de mi hermano\n", "abro la puerta y lo primero que veo es la cama destendida y un retrato de los dos cuando éramos niños sobre el nochero- No hay algo que me interese aquí, pero tomaré el retrato\n"]
+        }
+      }
+    ]
+  },
+  "arco5": {
+    "titulo": "Una visita inesperada",
+    "mensajes": [
+      {
+        "id": "mensaje1",
+        "texto": "Hora: 11:05 am - 6 de septiembre\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje2",
+        "texto": "Salí de la casa de mi hermano y me dirigí a mi apartamento,\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje3",
+        "texto": "no podía dejar de pensar en las llamadas que había estado\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje4",
+        "texto": "recibiendo y esas cartas en las escenas de los asesinatos,\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje5",
+        "texto": "pareciera que alguien lo estaba haciendo a propósito,\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje6",
+        "texto": "pero ¿quién? No tengo deudas y mantengo un bajo perfil,\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje7",
+        "texto": "solo se me ocurre algún tipo de venganza por algo del\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje8",
+        "texto": "trabajo. En estas cosas la gente puede terminar\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje9",
+        "texto": "desquitándose por cosasque se salen de las manos.\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje10",
+        "texto": "- Suena el timbre -\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje11",
+        "texto": "[Diego]: Ya voy\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje12",
+        "texto": "Al acercarme a la mirilla de la puerta pude ver un viejo de\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje13",
+        "texto": "entre 50 y 70 años de edad se encontraba parado del otro\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje14",
+        "texto": " lado. Entre sus características resalta su falta de pelo\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje15",
+        "texto": "en la cabeza pero abundancia de este en su bigote.\n",
+        "orientacion": true,,
+        "imagen" : "persona2.txt",
+        "alternativas": {
+            "a":["No abrir\n ", "-continúa sonando el timbre \n [Diego]_ Es muy insistente este tipo\n "],
+            "b":["Abrir\n", "[Diego]¿Sí? -[Viejo]Buenas tardes señor Diego\n"]
+        }
+      },
+      {
+        "id": "mensaje16",
+        "texto": "n el momento en el que el anciano dijo mi nombre sentí un\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje17",
+        "texto": "escalofrío por todo el cuerpo, esto no me da buena espina.\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje18",
+        "texto": "Sus ojos vacíos y tono de voz plano me hacían sentir como",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje19",
+        "texto": "si estuviera delante de un cadáver\\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje20",
+        "texto": "[Diego]¿Quién es usted?\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje21",
+        "texto": "Me llamo Abelardo, pero puede decirme Abel\n",
+        "orientacion": true,
+        "alternativas": {
+            "a":["¿Qué quiere?\n ", "[Abelardo] Solo quería venir a verlo después de lo de su hermano debe estar devastado ¿no es así?\n "],
+            "b":["¿Usted tuvo algo que ver con la muerte de mi hermano?\n", "[Abelardo] Por supuesto\n"]
+        }
+      },
+      {
+        "id": "mensaje22",
+        "texto": "[Abelardo] De seguro no me recuerda, para la gente con su\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje23",
+        "texto": "trabajo los nombres de los familiares de las personas\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje24",
+        "texto": " que mueren solo son unas letras en un expediente.\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje25",
+        "texto": "[Diego]¿Quién es usted?\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje26",
+        "texto": "Ya se lo dije, mi nombre es Abel y mi esposa era Natalia.\n",
+        "orientacion": false,
+        "alternativas": {
+            "a":["Por supuesto, tengo una numerosa cantidad de casos, es mi trabajo limitar a cualquier familiar a un expediente, solo estoy haciendo mi trabajo.\n", "[Abelardo]Oh, ¿y eso es tan muy fácil para usted no es así?\n "],
+            "b":["El trabajo es una de muchas preocupaciones, no me puedo permitir tomar mi trabajo como algo personal, tengo mucho trabajo, muchos casos y digamos que no me sobra el tiempo para perderlo con usted, ¿Nos entendemos?\n", "[Abelardo]Oh, ¿y eso es tan muy fácil para usted no es así?\n"],
+            "c":["Mire, sea lo que sea que le haya pasado a su familiar debe saber que solo hago mi trabajo, yo no mato gente.\n", "[Abelardo]Oh, ¿y eso es tan muy fácil para usted no es así?\n"]
+        }
+      },
+      {
+        "id": "mensaje27",
+        "texto": "[Abelardo] “solo hago mi trabajo”,\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje28",
+        "texto": "¡por su trabajo perdí a mi esposa!\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje29",
+        "texto": "Ya hace 5 años de eso, en un accidente de tránsito.\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje30",
+        "texto": "Un malnacido en una camioneta iba borracho y la \n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje31",
+        "texto": "atropelló mientras cruzaba el semáforo. Era culpable,\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje32",
+        "texto": "pero supongo que lo arregló todo con dinero, ¿no es así?\n",
+        "orientacion": false,
+        "alternativas": {
+            "a":["¿Qué está diciendo, asesinó a mi hermano por algo de lo que no tiene pruebas?\n ", "[Abelardo] Así es señor Diego, no tengo pruebas, pero yo estuve ahí, vi como la atropellaron y la cara de imbécil de ese hombre. Era evidente que estaba borracho y no obtuvo ni un año de cárcel-\n "],
+            "b":["-Esto no está bien, el anciano está loco(cerrar la puerta)-\n", "[Abelardo] Al ver mi intento de cerrar la puerta el hombre asotó la punta de su bastón contra el suelo. El sonido resonó por todo el piso del edificio pero nadie salió, ni siquiera para husmear.\n"]
+        }
+      },
+      {
+        "id": "mensaje33",
+        "texto": "Decido definitivamente usar fuerza para mover el bastón\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje34",
+        "texto": "y cerrar la puerta de un golpe, con locos como este\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje35",
+        "texto": "es mejor no arriesgarse.\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje36",
+        "texto": "[Abelardo] ¡No se vaya!— grita, con su grave y \n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje37",
+        "texto": "desgastada voz. —No entiende lo que está en juego.\n",
+        "orientacion": false
+      },
+      {
+        "id": "mensaje38",
+        "texto": "Mi corazón palpita con fuerza, una sensación de \n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje39",
+        "texto": "inquietud se apodera de mí. Este anciano podría ser un\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje40",
+        "texto": "loco, pero su visita ha dejado un torrente de preguntas\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje41",
+        "texto": "en mi mente.Es imperativo que descubra quién es \n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje42",
+        "texto": "realmente este hombre y frenar lo que se cierne sobre mí.\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje43",
+        "texto": "Me alejo un paso de la puerta, tratando de calmar la \n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje44",
+        "texto": "tormenta de pensamientos. Su rostro, surcado por\n ",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje45",
+        "texto": "arrugas de sufrimiento, se clava en mi memoria.\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje46",
+        "texto": "¿Qué secretos guarda? \n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje47",
+        "texto": "Con cautela, me asomo por la mirilla, mi \n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje48",
+        "texto": "respiración está contenida. Al mirar, siento un \n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje49",
+        "texto": "\npoco de alivio, no hay nadie allí, Tengo que",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje50",
+        "texto": "recomponerme, no puedo dejar esto así. Debo \n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje51",
+        "texto": "obtener respuestas. Con determinación, retrocedo\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje52",
+        "texto": "y comienzo a buscar entre mis archivos,\n",
+        "orientacion": true,
+        "imagen" : "archivos.txt"
+      },
+      {
+        "id": "mensaje53",
+        "texto": "revisando cada documento relacionado con el\n ",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje54",
+        "texto": "caso de mi hermano. Quizás haya alguna pista \n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje55",
+        "texto": "que arroje luz sobre este Abel.\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje56",
+        "texto": "No parece haber mucha información en los\n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje57",
+        "texto": "archivos de mi apartamento, pero sé que los \n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje58",
+        "texto": "expedientes se encuentran en mi oficina. Debo \n",
+        "orientacion": true
+      },
+      {
+        "id": "mensaje59",
+        "texto": "llegar allí, y pronto.\n",
+        "orientacion": true
+      }    
+    ]
+  }
+}
