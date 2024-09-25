@@ -55,7 +55,7 @@ La siguiente sección contiene el diagrama de flujo del juego. Se empieza con un
 flowchart TD
     n2("Inicio") --> n12["Se limpia consola con os.system(´cls´)"]
     n12 --> n13[["Imprimir ventana"]]
-    n13 --> n14["Obtener_mensajes_arcos"]
+    n13 --> n14[["Obtener_mensajes_arcos"]]
     n14 --> n15("fin")
 ```
 
